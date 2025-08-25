@@ -15,6 +15,7 @@
   width: 10rem;
   margin: 1rem;
   animation: forwards fadeIn 1.7s ease-in;
+  z-index: 3;
 }
 
 .pilar-logo-vertical {
@@ -59,7 +60,6 @@
   transform: translateX(100%);
 }
 
-/* Ajuster la position des titres pour qu'ils restent au-dessus des images */
 .carrousel-titles {
   position: absolute;
   display: flex;
@@ -82,9 +82,11 @@
 }
 
 .carrousel-title h1 {
+  font-family: Pilar;
   color: white;
   cursor: pointer;
   transition: scale 0.2s ease-in;
+  text-shadow: 0px 0px 20px rgba(0,0,0,1);
 }
 
 .carrousel-title:hover > h1 {

@@ -1,17 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, type CSSProperties } from 'react';
 
 import pilarHorizontal from './assets/logos/PILAR logo_horizontaal.png';
 import pilarVertical from './assets/logos/PILAR_logo_gestapeld.png';
 import barImg from './assets/pictures/5661878892_15fba42846_o.jpg';
-import venueImg from './assets/pictures/pexels-bri-schneiter-28802-346529.jpg';
-import somethingImg from './assets/pictures/pexels-fotios-photos-1107717.jpg';
+import venueImg from './assets/pictures/pilar-box.jpg';
+import expoImg from './assets/pictures/pilar-expo.jpg';
 
 import './App.css';
 
 const carrouselImages = [
-  { key: 'Bar', src: barImg },
-  { key: 'Venue', src: venueImg },
-  { key: 'Something', src: somethingImg },
+  { key: 'Bar Pilar', src: barImg },
+  { key: 'Pilar Box', src: venueImg },
+  { key: 'Pilar Expo', src: expoImg },
 ];
 
 function App() {
@@ -47,11 +47,13 @@ function App() {
 
   return (
     <div className="app">
-      <img
-        src={pilarVertical}
-        alt="logo-pilar"
-        className="pilar-logo-vertical"
-      />
+      <div className="pilar-logo-bg">
+        <img
+          src={pilarVertical}
+          alt="logo-pilar"
+          className="pilar-logo-vertical"
+        />
+      </div>
       <img
         src={pilarHorizontal}
         alt="logo-pilar"
@@ -69,7 +71,7 @@ function App() {
                 '--index-distance': `${
                   previousIndex !== null ? index - previousIndex : 0
                 }`,
-              } as React.CSSProperties
+              } as CSSProperties
             }
           />
         ))}
