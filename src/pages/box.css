@@ -1,0 +1,37 @@
+.pilar-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.pilar-box-hero {
+  text-align: center;
+  position: relative;
+}
+
+.pilar-box-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.pilar-box-text_title {
+  font-family: Pilar;
+}
+
+.pilar-box-text_intro {
+  width: 60%;
+  font-size: 1.5rem;
+  margin: 0 0 3rem 0;
+}
+
+.pilar-box-img {
+  width: 100%;
+}
+

@@ -1,94 +1,24 @@
-import { useState, useEffect, type CSSProperties } from 'react';
-
-import pilarHorizontal from './assets/logos/PILAR logo_horizontaal.png';
-import pilarVertical from './assets/logos/PILAR_logo_gestapeld.png';
-import barImg from './assets/pictures/5661878892_15fba42846_o.jpg';
-import venueImg from './assets/pictures/pilar-box.jpg';
-import expoImg from './assets/pictures/pilar-expo.jpg';
+import { BrowserRouter as Router, Route, Routes } from 'react-router';
 
 import './App.css';
+import Home from './pages/Home';
+import Bar from './pages/Bar';
+import Box from './pages/Box';
+import Expo from './pages/Expo';
+import NavBar from './components/NavBar';
 
-const carrouselImages = [
-  { key: 'Bar Pilar', src: barImg },
-  { key: 'Pilar Box', src: venueImg },
-  { key: 'Pilar Expo', src: expoImg },
-];
-
-function App() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [previousIndex, setPreviousIndex] = useState<number | null>(null);
-
-  useEffect(() => {
-    if (hoveredIndex !== null) {
-      setPreviousIndex(hoveredIndex);
-    }
-  }, [hoveredIndex]);
-
-  const getTransitionClass = (index: number) => {
-    if (hoveredIndex === null) {
-      if (index === 1) return 'active';
-      if (previousIndex !== null && previousIndex < 1) {
-        return index < 1 ? 'left' : 'right';
-      }
-      if (previousIndex !== null && previousIndex > 1) {
-        return index > 1 ? 'right' : 'left';
-      }
-      return '';
-    }
-
-    if (hoveredIndex === index) return 'active';
-    if (previousIndex === null) return '';
-
-    const distance = index - hoveredIndex;
-    if (distance > 0) return 'right';
-    if (distance < 0) return 'left';
-    return '';
-  };
+const App = () => {
 
   return (
-    <div className="app">
-      <div className="pilar-logo-bg">
-        <img
-          src={pilarVertical}
-          alt="logo-pilar"
-          className="pilar-logo-vertical"
-        />
-      </div>
-      <img
-        src={pilarHorizontal}
-        alt="logo-pilar"
-        className="pilar-logo-horizontal"
-      />
-      <div className="carrousel-container">
-        {carrouselImages.map((image, index) => (
-          <img
-            key={image.key}
-            src={image.src}
-            alt={image.key}
-            className={`carrousel-image ${getTransitionClass(index)}`}
-            style={
-              {
-                '--index-distance': `${
-                  previousIndex !== null ? index - previousIndex : 0
-                }`,
-              } as CSSProperties
-            }
-          />
-        ))}
-        <div className="carrousel-titles">
-          {carrouselImages.map((image, index) => (
-            <div
-              key={image.key}
-              className="carrousel-title"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              <h1>{image.key}</h1>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/bar-pilar" element={<Bar />} />
+        <Route path="/pilar-box" element={<Box />} />
+        <Route path="/pilar-expo" element={<Expo />} />
+      </Routes>
+    </Router>
   );
 }
 
