@@ -31,17 +31,17 @@ const Card: FC<CardProps> = ({
         <p>{duration}</p>
         <div className="card-separator" />
         <p>{extra}</p>
-        <div className="card-separator" />
+        {extra && <div className="card-separator" />}
         <p>{light}</p>
         <div className="card-separator" />
         <p>{projection}</p>
         <div className="card-separator" />
-        <p>{bar}</p>
-        <div className="card-separator" />
         <p>{backstage}</p>
-        <div className="card-separator" />
+        {bar && <div className="card-separator" />}
+        <p>{bar}</p>
+        {security && <div className="card-separator" />}
         <p>{security}</p>
-        <div className="card-separator" />
+        {help && <div className="card-separator" />}
         <p>{help}</p>
         <Button title="Book now" />
       </div>

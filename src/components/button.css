@@ -1,6 +1,8 @@
 .center {
   width: 150px;
   height: 50px;
+  position: absolute;
+  bottom: 1rem;
 }
 
 .btn {
