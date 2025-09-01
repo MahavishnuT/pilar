@@ -8,9 +8,8 @@ import Expo from './pages/Expo';
 import NavBar from './components/NavBar';
 
 const App = () => {
-
   return (
-    <Router>
+    <Router basename="/pilar">
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -20,6 +19,6 @@ const App = () => {
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;
