@@ -27,11 +27,24 @@
 
 .pilar-box-text_intro {
   width: 60%;
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 2vw, 1.5rem);
   margin: 0 0 3rem 0;
 }
 
 .pilar-box-img {
   width: 100%;
+  height: 100vh;
 }
 
+.cards-title {
+  margin: 0 auto;
+  font-size: 2.5rem;
+}
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin: 3rem 1rem;
+}

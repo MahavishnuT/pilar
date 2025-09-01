@@ -3,6 +3,7 @@ import pilarHorizontal from '../assets/logos/PILAR logo_horizontaal.png';
 import './navbar.css';
 
 const NavBar = () => {
+
   return (
     <div className="navbar">
       <Link to="/">
