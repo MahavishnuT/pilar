@@ -8,6 +8,7 @@ import box_4 from '../assets/pictures/box/box_4.jpg';
 import box_5 from '../assets/pictures/box/box_5.jpg';
 import './box.css';
 import Card from '../components/Card';
+import Button from '../components/Button';
 const Box = () => {
   return (
     <section className="pilar-box">
@@ -24,6 +25,7 @@ const Box = () => {
             evenement, Pilar Box zorgt voor een onvergetelijke beleving voor
             artiesten en publiek.
           </p>
+          <Button title="Reserveer nu" />
         </div>
       </div>
       <Section
@@ -53,7 +55,7 @@ const Box = () => {
         img={box_5}
         description="Box Nightlife geeft je exclusieve toegang tot onze zaal tot 6 uur ’s ochtends. Professionele licht- en geluidsbegeleiding zorgen voor een feestbeleving op topniveau, terwijl een ervaren securityteam instaat voor een veilig en zorgeloos verloop. Achter de bar staan bekwame barmannen en -vrouwen klaar om je gasten de hele nacht van drankjes te voorzien."
       />
-      <h2 className='cards-title'>Vergelijk onze pakketten</h2>
+      <h2 className="cards-title">Vergelijk onze pakketten</h2>
       <div className="cards-container">
         <Card
           title="Essential"
