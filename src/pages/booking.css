@@ -1,0 +1,15 @@
+.booking-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 20px;
+  min-height: 100vh;
+  margin: 10rem 0;
+}
+
+.booking-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 30%;
+}
