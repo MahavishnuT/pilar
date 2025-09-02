@@ -1,18 +1,17 @@
+import Input from '../components/Input';
+import PhoneInputs from '../components/PhoneInput';
+
 import './booking.css';
 
 const Booking = () => {
   return (
-    <section className='booking-section'>
+    <section className="booking-section">
       <h1 className="booking-title">Booking</h1>
       <form action="submit">
-        <label htmlFor="name">First Name</label>
-        <input type="text" id="name" name="name" required />
-
-        <label htmlFor="name">Last Name</label>
-        <input type="text" id="name" name="name" required />
-
-        <label htmlFor="email">Email</label>
-        <input type="email" id="email" name="email" required />
+        <Input title="First Name" placeholder="First Name" type="text" />
+        <Input title="Last Name" placeholder="Last Name" type="text" />
+        <Input title="Email" placeholder="Email" type="email" />
+        <PhoneInputs />
 
         <label htmlFor="phone">Phone</label>
         <input type="tel" id="phone" name="phone" required />
@@ -62,14 +61,25 @@ const Booking = () => {
         <input type="checkbox" id="foyer" name="foyer" />
 
         <label htmlFor="duration">Duration</label>
-        <input type="text" id="duration" name="duration" required />
+        <span>from</span>
+        <input type="number" id="duration" name="duration" required />
+        <span>to</span>
+        <input type="number" id="duration" name="duration" required />
 
-        <label htmlFor="expectedAttendance">Estimated amount of visitors (cannot be higher than 300)</label>
-        <input type="number" id="expectedAttendance" name="expectedAttendance" min="1" max="300" required />
-
+        <label htmlFor="expectedAttendance">
+          Estimated amount of visitors (cannot be higher than 300)
+        </label>
+        <input
+          type="number"
+          id="expectedAttendance"
+          name="expectedAttendance"
+          min="1"
+          max="300"
+          required
+        />
       </form>
     </section>
-  )
-}
+  );
+};
 
-export default Booking
+export default Booking;
