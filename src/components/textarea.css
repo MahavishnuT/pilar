@@ -1,21 +1,24 @@
-.input-container {
+.textarea-container {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.input-container label {
+.textarea-container label {
   font-size: 1rem;
 }
 
-.input {
+.textarea {
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: white;
   color: black;
+  font-family: inherit;
+  font-size: .9rem;
+  resize: vertical;
 }
 
-.input::placeholder {
+.textarea::placeholder {
   color: #999;
 }

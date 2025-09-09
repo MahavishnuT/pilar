@@ -6,18 +6,20 @@ import './phoneInput.css';
 
 const PhoneInputs = () => {
   const [value, setValue] = useState<string | undefined>();
-  console.log(value);
 
   return (
-    <PhoneInput
-      placeholder="Enter phone number"
-      countryCallingCodeEditable={false}
-      international
-      defaultCountry="BE"
-      value={value}
-      onChange={setValue}
-    />
-  )
-}
+    <div className="phoneInput-container">
+      <label htmlFor="phoneInput-label">Phone Number</label>
+      <PhoneInput
+        placeholder="Enter phone number"
+        countryCallingCodeEditable={false}
+        international
+        defaultCountry="BE"
+        value={value}
+        onChange={setValue}
+      />
+    </div>
+  );
+};
 
-export default PhoneInputs
+export default PhoneInputs;

@@ -1,21 +1,17 @@
-.input-container {
+.select-container {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.input-container label {
+.select-container label {
   font-size: 1rem;
 }
 
-.input {
+.select {
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: white;
-  color: black;
-}
-
-.input::placeholder {
   color: #999;
 }

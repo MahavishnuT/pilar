@@ -1,11 +1,31 @@
+.phoneInput-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .PhoneInputInput {
   padding: 0.5rem;
-  border: 1px solid #ccc;
+  border: none;
+  border-left: 1px solid #ccc;
   border-radius: 4px;
   background-color: white;
   color: black;
+  border-radius: 0 4px 4px 0;
 }
 
 .PhoneInputInput::placeholder {
   color: #999;
+}
+
+.PhoneInputCountry {
+  padding: 0.5rem;
+  border-radius: 4px 0 0 4px;
+  background-color: white;
+  margin-right: 0;
+}
+
+.PhoneInputCountrySelectArrow {
+  color: black;
+  margin-left: .6rem;
 }

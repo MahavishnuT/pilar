@@ -1,7 +1,32 @@
 import Input from '../components/Input';
 import PhoneInputs from '../components/PhoneInput';
+import Select from '../components/Select';
+import Textarea from '../components/Textarea';
 
 import './booking.css';
+
+const ORGANIZATION_OPTIONS = [
+  'VUB',
+  'Commercial company',
+  'NPO or social / cultural organization',
+  'Individual Person',
+];
+
+const PACKAGE_OPTIONS = [
+  'Essential',
+  'Essential Plus',
+  'Premium',
+  'Experience',
+  'Nightlife',
+];
+
+const EVENT_TYPE_OPTIONS = [
+  'Concert',
+  'Theater',
+  'Party',
+  'Talk / Conference',
+  'Film screening',
+];
 
 const Booking = () => {
   return (
@@ -12,70 +37,75 @@ const Booking = () => {
         <Input title="Last Name" placeholder="Last Name" type="text" />
         <Input title="Email" placeholder="Email" type="email" />
         <PhoneInputs />
+        <Input
+          title="Billing Address"
+          placeholder="Billing Address"
+          type="text"
+        />
+        <Select
+          title="Type of Organization"
+          optionsList={ORGANIZATION_OPTIONS}
+        />
 
-        <label htmlFor="phone">Phone</label>
-        <input type="tel" id="phone" name="phone" required />
+        <Input title="Preferred date of event" type="date" />
+        <Input type="date" />
+        <Input type="date" />
+        <Input type="date" />
+        <Input type="date" />
 
-        <label htmlFor="date">Billing Address</label>
-        <input type="text" id="billing" name="billing" required />
+        <Input
+          title="Name of your event"
+          placeholder="Name of your event"
+          type="text"
+        />
 
-        <label htmlFor="organizationType">Type of Organization</label>
-        <select id="organizationType" name="organizationType" required>
-          <option value="">Select an option</option>
-          <option value="vub">VUB</option>
-          <option value="commercial company">Commercial company</option>
-          <option value="npo">NPO or social / cultural organization</option>
-          <option value="individual">Individual Person</option>
-        </select>
+        <Textarea
+          title="Describe your event"
+          placeholder="Describe your event"
+        />
 
-        <label htmlFor="preferredDate">Preferred date of event</label>
-        <input type="date" id="preferredDate" name="preferredDate" required />
+        <Select title="Package" optionsList={PACKAGE_OPTIONS} />
 
-        <label htmlFor="eventName">Name of your event</label>
-        <input type="text" id="eventName" name="eventName" required />
+        <Select title="Type of event" optionsList={EVENT_TYPE_OPTIONS} />
 
-        <label htmlFor="eventDescription">Describe your event</label>
-        <textarea id="eventDescription" name="eventDescription" required />
+        <Input title="Do you wish the foyer bar to be open?" type="checkbox" />
 
-        <label htmlFor="package">Package</label>
-        <select id="package" name="package" required>
-          <option value="">Select an option</option>
-          <option value="essential">Essential</option>
-          <option value="essentialPlus">Essential Plus</option>
-          <option value="premium">Premium</option>
-          <option value="experience">Experience</option>
-          <option value="nightlife">Nightlife</option>
-        </select>
-
-        <label htmlFor="eventType">Event type</label>
-        <select id="eventType" name="eventType" required>
-          <option value="">Select an option</option>
-          <option value="concert">Concert</option>
-          <option value="Theater">Theater</option>
-          <option value="party">Party</option>
-          <option value="talk">Talk / Conference</option>
-          <option value="film">Film screening</option>
-        </select>
-
-        <label htmlFor="foyer">Do you wish the foyer bar to be open?</label>
-        <input type="checkbox" id="foyer" name="foyer" />
-
-        <label htmlFor="duration">Duration</label>
-        <span>from</span>
-        <input type="number" id="duration" name="duration" required />
-        <span>to</span>
-        <input type="number" id="duration" name="duration" required />
-
-        <label htmlFor="expectedAttendance">
-          Estimated amount of visitors (cannot be higher than 300)
-        </label>
-        <input
+        <span>Duration</span>
+        <div className="duration-container">
+          <Input
+            title="From"
+            type="number"
+            min="0"
+            max="23"
+            className="duration"
+          />
+          <Input
+            title="u"
+            type="number"
+            min="0"
+            max="59"
+            className="duration"
+          />
+          <Input
+            title="To"
+            type="number"
+            min="0"
+            max="23"
+            className="duration"
+          />
+          <Input
+            title="u"
+            type="number"
+            min="0"
+            max="59"
+            className="duration"
+          />
+        </div>
+        <Input
+          title="Estimated amount of visitors (cannot be higher than 300)"
           type="number"
-          id="expectedAttendance"
-          name="expectedAttendance"
           min="1"
           max="300"
-          required
         />
       </form>
     </section>
