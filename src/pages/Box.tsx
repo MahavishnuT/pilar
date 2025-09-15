@@ -25,7 +25,7 @@ const Box = () => {
             evenement, Pilar Box zorgt voor een onvergetelijke beleving voor
             artiesten en publiek.
           </p>
-          <Button title="Reserveer nu" isLightBg/>
+          <Button title="Reserveer nu" isLightBg to="/box-booking" />
         </div>
       </div>
       <Section

@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import { type FC } from 'react';
 
 import './input.css';
 
@@ -9,9 +9,20 @@ interface InputProps {
   className?: string;
   min?: string;
   max?: string;
+  value?: string | number;
+  onChange?: (value: string) => void;
 }
 
-const Input: FC<InputProps> = ({ title, placeholder, type, className, min, max }) => {
+const Input: FC<InputProps> = ({
+  title,
+  placeholder,
+  type,
+  className,
+  min,
+  max,
+  value,
+  onChange,
+}) => {
   return (
     <div className={`input-container ${className}`}>
       <label htmlFor="input">{title}</label>
@@ -23,6 +34,8 @@ const Input: FC<InputProps> = ({ title, placeholder, type, className, min, max }
         placeholder={placeholder}
         min={min}
         max={max}
+        value={value}
+        onChange={(e) => onChange?.(e.target.value)}
       />
     </div>
   );

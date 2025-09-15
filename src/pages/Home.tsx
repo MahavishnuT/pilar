@@ -2,7 +2,7 @@ import { useState, useEffect, type CSSProperties } from 'react';
 import { Link } from 'react-router';
 
 import pilarVertical from '../assets/logos/PILAR_logo_gestapeld.png';
-import barImg from '../assets/pictures/home/5661878892_15fba42846_o.jpg';
+import barImg from '../assets/pictures/home/bar-pilar.jpg';
 import venueImg from '../assets/pictures/home/pilar-box.jpg';
 import expoImg from '../assets/pictures/home/pilar-expo.jpg';
 
