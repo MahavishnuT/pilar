@@ -12,6 +12,7 @@ interface CardProps {
   backstage?: string;
   security?: string;
   help?: string;
+  link?: string;
 }
 
 const Card: FC<CardProps> = ({
@@ -24,6 +25,7 @@ const Card: FC<CardProps> = ({
   backstage,
   security,
   help,
+  link,
 }) => {
   return (
     <div className="card-container">
@@ -43,7 +45,7 @@ const Card: FC<CardProps> = ({
       <p>{security}</p>
       {help && <div className="card-separator" />}
       <p>{help}</p>
-      <Button title="Book now" to="/box-booking" />
+      <Button title="Book now" to={link} />
     </div>
   );
 };

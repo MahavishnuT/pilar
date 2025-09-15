@@ -64,6 +64,7 @@ const Box = () => {
           light="Basic setup, no technician. Only standard lightning and sound through HMDI connection"
           projection="Screen projection included"
           backstage="Access to backstage kitchen only"
+          link="/box-booking"
         />
         <Card
           title="Essential plus"
@@ -73,6 +74,7 @@ const Box = () => {
           projection="Screen projection included"
           backstage="Access included to the backstage"
           bar="Bar : optional (included)"
+          link="/box-booking"
         />
         <Card
           title="Premium"
@@ -82,6 +84,7 @@ const Box = () => {
           projection="Screen projection included"
           backstage="Access included to the backstage"
           bar="Bar : optional (included)"
+          link="/box-booking"
         />
         <Card
           title="Nightlife"
@@ -91,6 +94,7 @@ const Box = () => {
           backstage="Access included to the backstage"
           bar="Bar included"
           security="Security included"
+          link="/box-booking"
         />
         <Card
           title="Experience"
@@ -101,6 +105,7 @@ const Box = () => {
           bar="Bar included"
           security="Security included"
           help="Extra help included"
+          link="/box-booking"
         />
       </div>
     </section>

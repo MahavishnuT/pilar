@@ -22,7 +22,7 @@ const Bar = () => {
             volledig privé worden afgehuurd tot 2u ’s nachts, inclusief
             professioneel barpersoneel.
           </p>
-          <Button title="Reserveer nu" isLightBg />
+          <Button title="Reserveer nu" isLightBg to="/bar-booking" />
         </div>
       </div>
       <Section
@@ -51,6 +51,7 @@ const Bar = () => {
           extra="Optionnal extra time, +2 hours or +4 hours"
           light="Standaard barindeling"
           projection="Audio installatie bar + Spotify"
+          link="/bar-booking"
         />
         <Card
           title="Essential plus"
@@ -59,6 +60,7 @@ const Bar = () => {
           light="Gepersonaliseerde barindeling"
           projection="Professionele audio setup + Pioneer DJ set"
           backstage="Professionele audio setup + Pioneer DJ set"
+          link="/bar-booking"
         />
         <Card
           title="Premium"
@@ -68,6 +70,7 @@ const Bar = () => {
           projection="Professionele audio setup + Pioneer DJ set"
           backstage="Volledig uitgeruste keuken"
           bar="Extra hulp inbegrepen"
+          link="/bar-booking"
         />
       </div>
       <div className="facilities-container">

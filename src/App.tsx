@@ -7,6 +7,7 @@ import Box from './pages/Box';
 import Expo from './pages/Expo';
 import NavBar from './components/NavBar';
 import BookingBox from './pages/BookingBox';
+import BookingBar from './pages/BookingBar';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/pilar-box" element={<Box />} />
         <Route path="/pilar-expo" element={<Expo />} />
         <Route path="/box-booking" element={<BookingBox />} />
+        <Route path="/bar-booking" element={<BookingBar />} />
       </Routes>
     </Router>
   );
