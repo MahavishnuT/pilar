@@ -5,19 +5,30 @@ interface SelectProps {
   title: string;
   optionsList: string[];
   onChange?: (value: string) => void;
+  value?: string;
+  required?: boolean;
 }
 
-const Select: FC<SelectProps> = ({ title, optionsList, onChange }) => {
+const Select: FC<SelectProps> = ({
+  title,
+  optionsList,
+  onChange,
+  value,
+  required,
+}) => {
   return (
     <div className="select-container">
-      <label htmlFor="select">{title}</label>
+      <label htmlFor={`select-${title}`}>
+        {title}
+      </label>
       <select
         className="select"
-        name="select"
-        id="select"
+        id={`select-${title}`}
+        value={value}
         onChange={(e) => onChange?.(e.target.value)}
+        required={required}
       >
-        <option value="">Select an option</option>
+        <option value="">Selecteer een optie</option>
         {optionsList.map((option) => (
           <option key={option} value={option}>
             {option}

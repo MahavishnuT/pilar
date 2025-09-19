@@ -1,12 +1,16 @@
 import { useState, useEffect } from 'react';
 import type { FormEvent } from 'react';
+
 import Input from '../components/Input';
 import PhoneInputs from '../components/PhoneInput';
 import Select from '../components/Select';
 import Textarea from '../components/Textarea';
-
-import './bookingBox.css';
 import Button from '../components/Button';
+import SwitchButton from '../components/SwitchButton';
+
+import './bookingBar.css';
+
+import BackgroundBarImg from '../assets/pictures/bar/bookingBG.jpg';
 
 const ORGANIZATION_OPTIONS = [
   'VUB',
@@ -31,37 +35,131 @@ const EVENT_TYPE_OPTIONS = [
   'Film screening',
 ];
 
-const BookingBox = () => {
-  const [selectedPackage, setSelectedPackage] = useState('');
-  const [startHour, setStartHour] = useState<number>(0);
-  const [startMinute, setStartMinute] = useState<number>(0);
-  const [endHour, setEndHour] = useState<number>(0);
-  const [endMinute, setEndMinute] = useState<number>(0);
+interface BookingForm {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  companyName: string;
+  billingAddress: string;
+  organization: string;
+  dates: string[];
+  eventName: string;
+  eventDescription: string;
+  package: string;
+  eventType: string;
+  hasBar: boolean;
+  startHour: number;
+  startMinute: number;
+  endHour: number;
+  endMinute: number;
+  visitors: number;
+}
+
+const BookingBar = () => {
+  const [formData, setFormData] = useState<BookingForm>({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    companyName: '',
+    billingAddress: '',
+    organization: '',
+    dates: [''],
+    eventName: '',
+    eventDescription: '',
+    package: '',
+    eventType: '',
+    hasBar: false,
+    startHour: 0,
+    startMinute: 0,
+    endHour: 0,
+    endMinute: 0,
+    visitors: 0,
+  });
+  console.log(formData);
+
   const [durationError, setDurationError] = useState<boolean>(false);
-  const [firstName, setFirstName] = useState('');
-  const [email, setEmail] = useState('');
+
+  const updateFormData = (field: keyof BookingForm, value: any) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
+  const addDate = () => {
+    if (formData.dates.length < 5) {
+      setFormData((prev) => ({
+        ...prev,
+        dates: [...prev.dates, ''],
+      }));
+    }
+  };
+
+  const updateDate = (index: number, value: string) => {
+    const newDates = [...formData.dates];
+    newDates[index] = value;
+    setFormData((prev) => ({
+      ...prev,
+      dates: newDates,
+    }));
+  };
+
+  const isFormValid = () => {
+    const requiredFields: (keyof BookingForm)[] = [
+      'firstName',
+      'lastName',
+      'email',
+      'phone',
+      'billingAddress',
+      'organization',
+      'dates',
+      'eventName',
+      'eventDescription',
+      'package',
+      'eventType',
+      'visitors',
+    ];
+
+    return (
+      requiredFields.every((field) => {
+        if (field === 'dates') {
+          return formData.dates[0] !== '';
+        }
+        return formData[field] !== '' && formData[field] !== 0;
+      }) && !durationError
+    );
+  };
 
   useEffect(() => {
-    const start = startHour + startMinute / 60;
-    const end = endHour + endMinute / 60;
+    const start = formData.startHour + formData.startMinute / 60;
+    const end = formData.endHour + formData.endMinute / 60;
     let duration = end - start;
 
     if (duration < 0) {
       duration += 24;
     }
 
-    const isEssentialPackage =
-      selectedPackage === 'Essential' || selectedPackage === 'Essential Plus';
+    const isEssentialPackage = ['Essential', 'Essential Plus'].includes(
+      formData.package
+    );
     setDurationError(isEssentialPackage && duration > 8);
-  }, [startHour, startMinute, endHour, endMinute, selectedPackage]);
+  }, [
+    formData.startHour,
+    formData.startMinute,
+    formData.endHour,
+    formData.endMinute,
+    formData.package,
+  ]);
 
   const filteredEventTypes = EVENT_TYPE_OPTIONS.filter((eventType) => {
-    if (selectedPackage === 'Essential') {
+    if (formData.package === 'Essential') {
       return (
         eventType === 'Talk / Conference' || eventType === 'Film screening'
       );
     }
-    if (selectedPackage === 'Experience' || selectedPackage === 'Nightlife') {
+    if (formData.package === 'Experience' || formData.package === 'Nightlife') {
       return (
         eventType === 'Concert' ||
         eventType === 'Theater' ||
@@ -74,8 +172,8 @@ const BookingBox = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     console.log('Form submitted');
-    console.log('First Name:', firstName);
-    console.log('Email:', email);
+    console.log('First Name:', formData.firstName);
+    console.log('Email:', formData.email);
 
     try {
       const response = await fetch('/api/email', {
@@ -84,8 +182,8 @@ const BookingBox = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          firstName,
-          email,
+          firstName: formData.firstName,
+          email: formData.email,
         }),
       });
 
@@ -102,112 +200,172 @@ const BookingBox = () => {
 
   return (
     <section className="booking-section">
+      <img src={BackgroundBarImg} alt="" />
       <h1 className="booking-title">Booking</h1>
       <form onSubmit={handleSubmit}>
         <Input
-          title="Voornaam"
+          title="Voornaam "
           placeholder="Voornaam"
           type="text"
-          value={firstName}
-          onChange={(value) => setFirstName(value)}
+          value={formData.firstName}
+          onChange={(value) => updateFormData('firstName', value)}
+          required
         />
-        <Input title="Achternaam" placeholder="Achternaam" type="text" />
         <Input
-          title="Email"
+          title="Achternaam "
+          placeholder="Achternaam"
+          type="text"
+          value={formData.lastName}
+          onChange={(value) => updateFormData('lastName', value)}
+          required
+        />
+        <Input
+          title="Email "
           placeholder="Email"
           type="email"
-          value={email}
-          onChange={(value) => setEmail(value)}
+          value={formData.email}
+          onChange={(value) => updateFormData('email', value)}
+          required
         />
         <PhoneInputs />
         <Input
           title="Bedrijfsnaam (Niet verplicht)"
           placeholder="Bedrijfsnaam (Niet verplicht)"
           type="text"
+          value={formData.companyName}
+          onChange={(value) => updateFormData('companyName', value)}
         />
         <Input
-          title="Facturatie adres"
+          title="Facturatie adres "
           placeholder="Facturatie adres"
           type="text"
+          value={formData.billingAddress}
+          onChange={(value) => updateFormData('billingAddress', value)}
+          required
         />
         <Select
-          title="Soort organisatie"
+          title="Soort organisatie "
           optionsList={ORGANIZATION_OPTIONS}
+          value={formData.organization}
+          onChange={(value) => updateFormData('organization', value)}
+          required
         />
 
-        <Input title="Gewenste datum" type="date" />
-        <Input type="date" />
-        <Input type="date" />
-        <Input type="date" />
-        <Input type="date" />
+        <div className="dates-container">
+          <div className="date-input-wrapper">
+            <Input
+              title="Gewenste datum "
+              type="date"
+              value={formData.dates[0]}
+              onChange={(value) => updateDate(0, value)}
+              required
+            />
+            {formData.dates.length < 5 && (
+              <button
+                type="button"
+                onClick={addDate}
+                className="add-date-btn"
+              />
+            )}
+          </div>
+          {formData.dates.slice(1).map((date, index) => (
+            <Input
+              key={index}
+              type="date"
+              title={`Alternatieve datum ${index + 1}`}
+              value={date}
+              onChange={(value) => updateDate(index + 1, value)}
+            />
+          ))}
+        </div>
 
         <Input
-          title="Name of your event"
+          title="Name of your event "
           placeholder="Name of your event"
           type="text"
+          value={formData.eventName}
+          onChange={(value) => updateFormData('eventName', value)}
+          required
         />
 
         <Textarea
           title="Beschrijf uw evenement"
           placeholder="Beschrijf uw evenement"
+          value={formData.eventDescription}
+          onChange={(value) => updateFormData('eventDescription', value)}
+          required
         />
 
         <Select
-          title="Pakket"
+          title="Pakket "
           optionsList={PACKAGE_OPTIONS}
-          onChange={(value) => setSelectedPackage(value)}
+          value={formData.package}
+          onChange={(value) => updateFormData('package', value)}
+          required
         />
 
-        {selectedPackage && (
-          <Select title="Type of event" optionsList={filteredEventTypes} />
+        {formData.package && (
+          <Select
+            title="Type of event "
+            optionsList={filteredEventTypes}
+            value={formData.eventType}
+            onChange={(value) => updateFormData('eventType', value)}
+            required
+          />
         )}
 
-        {(selectedPackage == 'Essential Plus' ||
-          selectedPackage == 'Premium') && (
-          <Input
-            title="Do you wish the foyer bar to be open?"
-            type="checkbox"
+        {(formData.package == 'Essential Plus' ||
+          formData.package == 'Premium') && (
+          <SwitchButton
+            title="Do you need a bar?"
+            name="bar-option"
+            value={formData.hasBar}
+            onChange={(value) => updateFormData('hasBar', value)}
           />
         )}
 
         <span>Duration</span>
         <div className="duration-container">
-          <Input
-            title="From"
-            type="number"
-            min="0"
-            max="23"
-            className="duration"
-            value={startHour}
-            onChange={(value) => setStartHour(Number(value))}
-          />
-          <Input
-            title=":"
-            type="number"
-            min="0"
-            max="59"
-            className="duration"
-            value={startMinute}
-            onChange={(value) => setStartMinute(Number(value))}
-          />
-          <Input
-            title="To"
-            type="number"
-            min="0"
-            max="23"
-            className="duration"
-            value={endHour}
-            onChange={(value) => setEndHour(Number(value))}
-          />
-          <Input
-            title=":"
-            type="number"
-            min="0"
-            max="59"
-            className="duration"
-            value={endMinute}
-            onChange={(value) => setEndMinute(Number(value))}
-          />
+          <div className="duration-subcontainer">
+            <Input
+              title="From"
+              type="number"
+              min="0"
+              max="23"
+              className="duration"
+              value={formData.startHour}
+              onChange={(value) => updateFormData('startHour', Number(value))}
+            />
+            <Input
+              title=":"
+              type="number"
+              min="0"
+              max="59"
+              className="duration"
+              value={formData.startMinute}
+              onChange={(value) => updateFormData('startMinute', Number(value))}
+            />
+          </div>
+          <div className="duration-subcontainer">
+            <Input
+              title="To"
+              type="number"
+              min="0"
+              max="23"
+              className="duration"
+              value={formData.endHour}
+              onChange={(value) => updateFormData('endHour', Number(value))}
+            />
+            <Input
+              title=":"
+              type="number"
+              min="0"
+              max="59"
+              className="duration"
+              value={formData.endMinute}
+              onChange={(value) => updateFormData('endMinute', Number(value))}
+            />
+          </div>
         </div>
         {durationError && (
           <span className="error-msg">
@@ -215,15 +373,24 @@ const BookingBox = () => {
           </span>
         )}
         <Input
-          title="Verwachte aantal bezoekers"
+          title="Verwachte aantal bezoekers "
           type="number"
           min="1"
           max="120"
+          value={formData.visitors}
+          onChange={(value) => updateFormData('visitors', Number(value))}
+          required
         />
-        <Button title="Verstuur" className="booking-button" isLightBg isSubmit />
+        <Button
+          title="Verstuur"
+          className="booking-button"
+          isLightBg
+          isSubmit
+          disabled={!isFormValid()}
+        />
       </form>
     </section>
   );
 };
 
-export default BookingBox;
+export default BookingBar;

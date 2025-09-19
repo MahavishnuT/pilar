@@ -12,7 +12,7 @@
   cursor: pointer;
   border: 1px solid white;
   outline: none;
-  transition: .5s ease-in-out;
+  transition: 0.5s ease-in-out;
   background-color: black;
 }
 
@@ -25,7 +25,7 @@ svg {
   stroke: grey;
   stroke-dasharray: 150 480;
   stroke-dashoffset: 150;
-  transition: all .7s ease-in-out;
+  transition: all 0.7s ease-in-out;
 }
 
 .btn:hover {
@@ -45,9 +45,35 @@ svg {
   color: white;
   font-size: 18px;
   font-weight: 100;
-  transition: .5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 .btn:hover span {
   color: black;
+}
+
+.btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn.disabled:hover {
+  transform: none;
+}
+
+.btn.disabled svg {
+  stroke: #ccc;
+}
+
+.btn.disabled span {
+  color: #999;
+}
+
+.btn.disabled:hover span {
+  color: #999;
+}
+
+.btn.disabled:hover {
+  background: transparent;
 }

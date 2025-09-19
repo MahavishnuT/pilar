@@ -3,15 +3,29 @@ import './switchButton.css';
 
 interface SwitchButtonProps {
   title: string;
+  name: string;
+  onChange?: (value: boolean) => void;
+  value?: boolean;
 }
 
-const SwitchButton:FC<SwitchButtonProps> = ({ title }) => {
+const SwitchButton: FC<SwitchButtonProps> = ({
+  title,
+  onChange,
+  value,
+}) => {
   return (
-    <div className='switch-container'>
+    <div className="switch-container">
       <span>{title}</span>
-      <input type="checkbox" />
+      <label className="toggle-switch">
+        <input
+          type="checkbox"
+          checked={value}
+          onChange={(e) => onChange?.(e.target.checked)}
+        />
+        <span className="slider"></span>
+      </label>
     </div>
-  )
-}
+  );
+};
 
-export default SwitchButton
+export default SwitchButton;

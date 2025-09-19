@@ -28,20 +28,38 @@ const Bar = () => {
       <Section
         title="Essential"
         img={bar_1}
-        description="Met Bar Pilar Essential geniet je in het weekend van 4 uur exclusieve toegang tot onze bar – ideaal voor conferenties, lezingen of korte bijeenkomsten, maar evengoed voor verjaardagsfeesten, borrels of een gezellige avond met vrienden. De bar is uitgerust met een gebruiksvriendelijk geluidssysteem waarop je je eigen muziek kan afspelen, of eenvoudig via onze tablet met Spotify. Een microfoon is standaard voorzien en aangesloten op de algemene installatie, en er is een groot televisiescherm beschikbaar voor presentaties, video’s of entertainment. Bij dit pakket blijft de standaard indeling van de bar behouden: tafels en meubilair kunnen niet verplaatst worden. Wil je langer blijven? Dan kan je eenvoudig extra tijd bijboeken in schijven van 2 uur. Zo combineert Bar Pilar de praktische faciliteiten van een professionele ruimte met de warme, gezellige sfeer van een bar – helemaal privé en volledig op maat van jouw gelegenheid.
+        description="Essential biedt je in het weekend 4 uur exclusieve toegang tot onze bar. Perfect voor conferenties,
+lezingen, borrels, verjaardagen of een avond met vrienden.
+De bar heeft een gebruiksvriendelijk geluidssysteem (met eigen muziek of Spotify via tablet),
+microfoon en groot scherm voor presentaties of entertainment.
+De standaard indeling blijft behouden; extra tijd kan je bijboeken per 2 uur. Zo combineert Bar Pilar
+professionele faciliteiten met de gezellige sfeer van een privébar.
 "
       />
       <Section
         title="Premium"
         img={bar_2}
-        description="Met Bar Pilar Premium krijg je 8 uur lang exclusieve toegang tot onze bar – ideaal voor feesten, recepties, bedrijfsevents of elke gelegenheid die wat meer ruimte en vrijheid vraagt. In dit pakket kan je de volledige indeling van de bar zelf bepalen: tafels en meubilair mogen vrij verplaatst worden zodat je de setting perfect kan afstemmen op jouw event. Bovendien heb je de optie om een volledige Pioneer DJ-set en een professionele geluidsinstallatie bij te reserveren, ideaal om van je avond een onvergetelijk feestje te maken. Standaard zijn er ook een microfoon, een groot televisiescherm en een gebruiksvriendelijk geluidssysteem aanwezig, waarop je je eigen muziek kan afspelen of eenvoudig onze tablet met Spotify kan gebruiken. Wil je langer doorgaan? Extra tijd kan steeds worden bijgeboekt in schijven van 2 uur. Zo geniet je van alle flexibiliteit om jouw evenement helemaal naar wens te organiseren.
+        description="Premium geeft je 8 uur exclusieve toegang tot onze bar, ideaal voor feesten, recepties of
+bedrijfsevents. Je bepaalt zelf de indeling van de bar en kan optioneel een Pioneer DJ-set met
+professionele geluidsinstallatie boeken.
+Standaard zijn er ook een microfoon, een groot televisiescherm en een gebruiksvriendelijk
+geluidssysteem aanwezig, waarop je je eigen muziek kan afspelen of eenvoudig onze tablet met
+Spotify kan gebruiken.
+Wil je langer doorgaan? Extra tijd kan steeds worden bijgeboekt in schijven van 2 uur. Zo geniet je
+van alle flexibiliteit om jouw evenement helemaal naar wens te organiseren.
 "
         left
       />
       <Section
         title="Experience"
         img={bar_3}
-        description="Met Bar Pilar Experience krijg je 8 uur lang exclusieve toegang tot onze bar, aangevuld met alle troeven om je event écht zorgeloos te laten verlopen. Dit pakket omvat niet alleen alle faciliteiten van het Premium-pakket, maar ook het gebruik van onze keuken. Zo kan je jouw bijeenkomst combineren met catering, zelf bereide gerechten of een culinaire invulling op maat. Daarnaast staat er een extra medewerker voor je klaar die het evenement in goede banen leidt. Van praktische ondersteuning tot het coördineren van de avond: zo kan jij je volledig focussen op je gasten, terwijl alles achter de schermen vlekkeloos verloopt. Uiteraard blijft het mogelijk om de barindeling volledig naar wens aan te passen, en kan je optioneel een Pioneer DJ-set met professionele geluidsinstallatie toevoegen. Wil je langer doorgaan? Ook hier kan je extra tijd bijboeken in schijven van 2 uur. Met Experience kies je voor comfort, flexibiliteit én een persoonlijke touch – ideaal voor wie zijn event nét dat tikkeltje meer wil geven."
+        description="Experience biedt 8 uur exclusieve toegang tot onze bar, inclusief alle Premium-faciliteiten én
+gebruik van de keuken – ideaal voor catering of een culinaire invulling op maat.
+Een extra medewerker ondersteunt en coördineert je event, zodat jij je volledig kan focussen op je
+gasten. De barindeling blijft vrij aanpasbaar en optioneel kan je een Pioneer DJ-set met
+professionele geluidsinstallatie toevoegen. Extra tijd boek je eenvoudig per 2 uur.
+Met Experience kies je voor comfort, flexibiliteit en een persoonlijke touch – perfect voor events
+die net dat tikkeltje meer vragen."
       />
       <h2 className="cards-title">Vergelijk onze pakketten</h2>
       <div className="cards-container">
@@ -59,7 +77,6 @@ const Bar = () => {
           extra="Optionnal extra time, +2 hours or +4 hours"
           light="Gepersonaliseerde barindeling"
           projection="Professionele audio setup + Pioneer DJ set"
-          backstage="Professionele audio setup + Pioneer DJ set"
           link="/bar-booking"
         />
         <Card
