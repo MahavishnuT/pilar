@@ -4,6 +4,7 @@ import './button.css';
 
 interface ButtonProps {
   title: string;
+  onClick?: () => void;
   isLightBg?: boolean;
   className?: string;
   isSubmit?: boolean;
@@ -13,6 +14,7 @@ interface ButtonProps {
 
 const Button: FC<ButtonProps> = ({
   title,
+  onClick,
   isLightBg,
   className,
   isSubmit,
@@ -24,6 +26,7 @@ const Button: FC<ButtonProps> = ({
       className={`btn ${isLightBg ? 'light-bg' : ''} ${disabled ? 'disabled' : ''}`}
       type={isSubmit ? 'submit' : 'button'}
       disabled={disabled}
+      onClick={onClick}
     >
       <svg width="180px" height="60px" viewBox="0 0 180 60" className="border">
         <polyline points="169,1 169,59 11,59 11,1 169,1" className="bg-line" />

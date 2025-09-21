@@ -1,22 +1,35 @@
+import type { FC } from 'react';
 import { useState } from 'react';
 import PhoneInput from 'react-phone-number-input';
 
 import 'react-phone-number-input/style.css';
 import './phoneInput.css';
 
-const PhoneInputs = () => {
-  const [value, setValue] = useState<string | undefined>();
+interface PhoneInputsProps {
+  value?: string;
+  onChange?: (value: string | undefined) => void;
+  required?: boolean;
+}
+
+const PhoneInputs: FC<PhoneInputsProps> = ({ value, onChange, required }) => {
+  const [phoneValue, setPhoneValue] = useState<string | undefined>(value);
+
+  const handleChange = (newValue: string | undefined) => {
+    setPhoneValue(newValue);
+    onChange?.(newValue);
+  };
 
   return (
     <div className="phoneInput-container">
-      <label htmlFor="phoneInput-label">Phone Number</label>
+      <label htmlFor="phoneInput-label">Phone Number {required && '*'}</label>
       <PhoneInput
         placeholder="Enter phone number"
         countryCallingCodeEditable={false}
         international
         defaultCountry="BE"
-        value={value}
-        onChange={setValue}
+        value={phoneValue}
+        onChange={handleChange}
+        required={required}
       />
     </div>
   );

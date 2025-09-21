@@ -11,6 +11,7 @@ import SwitchButton from '../components/SwitchButton';
 import './bookingBar.css';
 
 import BackgroundBarImg from '../assets/pictures/bar/bookingBG.jpg';
+import PopUp from '../components/PopUp';
 
 const ORGANIZATION_OPTIONS = [
   'VUB',
@@ -19,20 +20,14 @@ const ORGANIZATION_OPTIONS = [
   'Individueel persoon',
 ];
 
-const PACKAGE_OPTIONS = [
-  'Essential',
-  'Essential Plus',
-  'Premium',
-  'Experience',
-  'Nightlife',
-];
+const PACKAGE_OPTIONS = ['Essential', 'Premium', 'Experience'];
 
 const EVENT_TYPE_OPTIONS = [
   'Concert',
   'Theater',
   'Party',
-  'Talk / Conference',
-  'Film screening',
+  'Lezing / Conferentie',
+  'Film voorstelling',
 ];
 
 interface BookingForm {
@@ -56,32 +51,40 @@ interface BookingForm {
   visitors: number;
 }
 
+// Créez d'abord un objet avec les valeurs initiales
+const initialFormState: BookingForm = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  companyName: '',
+  billingAddress: '',
+  organization: '',
+  dates: [''],
+  eventName: '',
+  eventDescription: '',
+  package: '',
+  eventType: '',
+  hasBar: false,
+  startHour: 0,
+  startMinute: 0,
+  endHour: 0,
+  endMinute: 0,
+  visitors: 0,
+};
+
 const BookingBar = () => {
-  const [formData, setFormData] = useState<BookingForm>({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    companyName: '',
-    billingAddress: '',
-    organization: '',
-    dates: [''],
-    eventName: '',
-    eventDescription: '',
-    package: '',
-    eventType: '',
-    hasBar: false,
-    startHour: 0,
-    startMinute: 0,
-    endHour: 0,
-    endMinute: 0,
-    visitors: 0,
-  });
+  // Utilisez initialFormState comme valeur initiale
+  const [formData, setFormData] = useState<BookingForm>(initialFormState);
   console.log(formData);
 
   const [durationError, setDurationError] = useState<boolean>(false);
+  const [showPopUp, setShowPopUp] = useState<boolean>(false);
 
-  const updateFormData = (field: keyof BookingForm, value: any) => {
+  const updateFormData = (
+    field: keyof BookingForm,
+    value: string | number | boolean | string[]
+  ) => {
     setFormData((prev) => ({
       ...prev,
       [field]: value,
@@ -172,8 +175,6 @@ const BookingBar = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     console.log('Form submitted');
-    console.log('First Name:', formData.firstName);
-    console.log('Email:', formData.email);
 
     try {
       const response = await fetch('/api/email', {
@@ -191,8 +192,10 @@ const BookingBar = () => {
         throw new Error('Failed to send email');
       }
 
-      alert('Email sent successfully!');
+      setFormData(initialFormState);
+      setShowPopUp(true);
     } catch (error) {
+      setFormData(initialFormState);
       console.error('Error sending email:', error);
       alert('Failed to send email');
     }
@@ -200,8 +203,15 @@ const BookingBar = () => {
 
   return (
     <section className="booking-section">
+      {showPopUp && (
+        <PopUp
+          title="Bedankt voor uw aanvraag!"
+          text="Ons team zal binnen de 5 werkdagen contact met u opnemen."
+          onClose={() => setShowPopUp(false)}
+        />
+      )}
       <img src={BackgroundBarImg} alt="" />
-      <h1 className="booking-title">Booking</h1>
+      <h1 className="booking-title">Offerte</h1>
       <form onSubmit={handleSubmit}>
         <Input
           title="Voornaam "
@@ -227,7 +237,11 @@ const BookingBar = () => {
           onChange={(value) => updateFormData('email', value)}
           required
         />
-        <PhoneInputs />
+        <PhoneInputs
+          value={formData.phone}
+          onChange={(value) => updateFormData('phone', value || '')}
+          required
+        />
         <Input
           title="Bedrijfsnaam (Niet verplicht)"
           placeholder="Bedrijfsnaam (Niet verplicht)"
@@ -280,8 +294,8 @@ const BookingBar = () => {
         </div>
 
         <Input
-          title="Name of your event "
-          placeholder="Name of your event"
+          title="Naam van het evenement"
+          placeholder="Naam van het evenement"
           type="text"
           value={formData.eventName}
           onChange={(value) => updateFormData('eventName', value)}
@@ -317,7 +331,7 @@ const BookingBar = () => {
         {(formData.package == 'Essential Plus' ||
           formData.package == 'Premium') && (
           <SwitchButton
-            title="Do you need a bar?"
+            title="Wilt u gebruik maken van onze bar?"
             name="bar-option"
             value={formData.hasBar}
             onChange={(value) => updateFormData('hasBar', value)}
@@ -328,7 +342,7 @@ const BookingBar = () => {
         <div className="duration-container">
           <div className="duration-subcontainer">
             <Input
-              title="From"
+              title="vanaf"
               type="number"
               min="0"
               max="23"
@@ -348,7 +362,7 @@ const BookingBar = () => {
           </div>
           <div className="duration-subcontainer">
             <Input
-              title="To"
+              title="tot"
               type="number"
               min="0"
               max="23"
@@ -369,7 +383,7 @@ const BookingBar = () => {
         </div>
         {durationError && (
           <span className="error-msg">
-            Essential and Essential Plus packages cannot exceed 8 hours
+            Het Essential en Essential Plus pakket mag niet langer zijn dan 8 uur
           </span>
         )}
         <Input
@@ -387,6 +401,9 @@ const BookingBar = () => {
           isLightBg
           isSubmit
           disabled={!isFormValid()}
+          onClick={() => {
+            setShowPopUp(true);
+          }}
         />
       </form>
     </section>
