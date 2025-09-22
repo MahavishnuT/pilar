@@ -73,7 +73,7 @@ const Box = () => {
           light="Geluidstechnieker aanwezig gedurende het event. Standaard lichtplan inbegrepen"
           projection="Schermprojectie inbegrepen"
           backstage="Toegang tot de backstage inbegrepen"
-          bar="Bar inbegrepen (optioneel)"
+          bar="Bar inbegrepen"
           link="/box-booking"
         />
         <Card

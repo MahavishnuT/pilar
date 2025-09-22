@@ -51,7 +51,21 @@ a {
   text-decoration: none;
 }
 
-input, select, textarea, button {
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   background-color: #2B2A33;
+  padding: 0.5rem;
+  border: none;
+  color: white;
+  border-radius: 0;
+}
+
+input, textarea, button {
+  background-color: #2B2A33;
+  padding: 0.5rem;
+  border: none;
+  color: white;
 }
 
