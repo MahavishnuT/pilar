@@ -21,7 +21,7 @@ const PhoneInputs: FC<PhoneInputsProps> = ({ value, onChange, required }) => {
 
   return (
     <div className="phoneInput-container">
-      <label htmlFor="phoneInput-label">Phone Number</label>
+      <label htmlFor="phoneInput-label">Telefoonnummer</label>
       <PhoneInput
         placeholder="Enter phone number"
         countryCallingCodeEditable={false}
