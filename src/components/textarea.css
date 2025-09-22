@@ -4,16 +4,10 @@
   gap: 0.5rem;
 }
 
-.textarea-container label {
-  font-size: 1rem;
-}
-
 .textarea {
   padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: white;
-  color: black;
+  border: none;
+  color: white;
   font-family: inherit;
   font-size: .9rem;
   resize: vertical;

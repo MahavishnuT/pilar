@@ -7,11 +7,7 @@
 .PhoneInputInput {
   padding: 0.5rem;
   border: none;
-  border-left: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: white;
-  color: black;
-  border-radius: 0 4px 4px 0;
+  color: white;
 }
 
 .PhoneInputInput::placeholder {
@@ -20,12 +16,10 @@
 
 .PhoneInputCountry {
   padding: 0.5rem;
-  border-radius: 4px 0 0 4px;
-  background-color: white;
   margin-right: 0;
 }
 
 .PhoneInputCountrySelectArrow {
-  color: black;
+  color: white;
   margin-left: .6rem;
 }

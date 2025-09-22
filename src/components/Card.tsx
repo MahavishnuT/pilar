@@ -13,6 +13,7 @@ interface CardProps {
   security?: string;
   help?: string;
   link?: string;
+  buttonTitle?: string;
 }
 
 const Card: FC<CardProps> = ({
@@ -26,6 +27,7 @@ const Card: FC<CardProps> = ({
   security,
   help,
   link,
+  buttonTitle,
 }) => {
   return (
     <div className="card-container">
@@ -45,7 +47,7 @@ const Card: FC<CardProps> = ({
       <p>{security}</p>
       {help && <div className="card-separator" />}
       <p>{help}</p>
-      <Button title="Book now" to={link} />
+      <Button title={buttonTitle || 'Reserveer nu'} to={link} />
     </div>
   );
 };

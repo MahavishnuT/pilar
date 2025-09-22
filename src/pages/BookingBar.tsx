@@ -7,11 +7,11 @@ import Select from '../components/Select';
 import Textarea from '../components/Textarea';
 import Button from '../components/Button';
 import SwitchButton from '../components/SwitchButton';
+import PopUp from '../components/PopUp';
 
 import './bookingBar.css';
 
 import BackgroundBarImg from '../assets/pictures/bar/bookingBG.jpg';
-import PopUp from '../components/PopUp';
 
 const ORGANIZATION_OPTIONS = [
   'VUB',
@@ -21,14 +21,6 @@ const ORGANIZATION_OPTIONS = [
 ];
 
 const PACKAGE_OPTIONS = ['Essential', 'Premium', 'Experience'];
-
-const EVENT_TYPE_OPTIONS = [
-  'Concert',
-  'Theater',
-  'Party',
-  'Lezing / Conferentie',
-  'Film voorstelling',
-];
 
 interface BookingForm {
   firstName: string;
@@ -51,7 +43,6 @@ interface BookingForm {
   visitors: number;
 }
 
-// Créez d'abord un objet avec les valeurs initiales
 const initialFormState: BookingForm = {
   firstName: '',
   lastName: '',
@@ -74,12 +65,10 @@ const initialFormState: BookingForm = {
 };
 
 const BookingBar = () => {
-  // Utilisez initialFormState comme valeur initiale
   const [formData, setFormData] = useState<BookingForm>(initialFormState);
-  console.log(formData);
-
   const [durationError, setDurationError] = useState<boolean>(false);
   const [showPopUp, setShowPopUp] = useState<boolean>(false);
+  console.log(formData);
 
   const updateFormData = (
     field: keyof BookingForm,
@@ -118,10 +107,8 @@ const BookingBar = () => {
       'billingAddress',
       'organization',
       'dates',
-      'eventName',
       'eventDescription',
       'package',
-      'eventType',
       'visitors',
     ];
 
@@ -155,22 +142,6 @@ const BookingBar = () => {
     formData.endMinute,
     formData.package,
   ]);
-
-  const filteredEventTypes = EVENT_TYPE_OPTIONS.filter((eventType) => {
-    if (formData.package === 'Essential') {
-      return (
-        eventType === 'Talk / Conference' || eventType === 'Film screening'
-      );
-    }
-    if (formData.package === 'Experience' || formData.package === 'Nightlife') {
-      return (
-        eventType === 'Concert' ||
-        eventType === 'Theater' ||
-        eventType === 'Party'
-      );
-    }
-    return true;
-  });
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -293,15 +264,6 @@ const BookingBar = () => {
           ))}
         </div>
 
-        <Input
-          title="Naam van het evenement"
-          placeholder="Naam van het evenement"
-          type="text"
-          value={formData.eventName}
-          onChange={(value) => updateFormData('eventName', value)}
-          required
-        />
-
         <Textarea
           title="Beschrijf uw evenement"
           placeholder="Beschrijf uw evenement"
@@ -318,27 +280,16 @@ const BookingBar = () => {
           required
         />
 
-        {formData.package && (
-          <Select
-            title="Type of event "
-            optionsList={filteredEventTypes}
-            value={formData.eventType}
-            onChange={(value) => updateFormData('eventType', value)}
-            required
-          />
-        )}
-
-        {(formData.package == 'Essential Plus' ||
-          formData.package == 'Premium') && (
+        {(formData.package === 'Premium' || formData.package === 'Experience') && (
           <SwitchButton
-            title="Wilt u gebruik maken van onze bar?"
+            title="Wenst u gebruik te maken van een professionele audio installatie en Pioneer DJ-set?"
             name="bar-option"
             value={formData.hasBar}
             onChange={(value) => updateFormData('hasBar', value)}
           />
         )}
 
-        <span>Duration</span>
+        <span>Tijdsduur</span>
         <div className="duration-container">
           <div className="duration-subcontainer">
             <Input
@@ -383,11 +334,12 @@ const BookingBar = () => {
         </div>
         {durationError && (
           <span className="error-msg">
-            Het Essential en Essential Plus pakket mag niet langer zijn dan 8 uur
+            Het Essential en Essential Plus pakket mag niet langer zijn dan 8
+            uur
           </span>
         )}
         <Input
-          title="Verwachte aantal bezoekers "
+          title="Verwachte aantal bezoekers (maximaal 120)"
           type="number"
           min="1"
           max="120"
