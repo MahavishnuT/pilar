@@ -47,7 +47,7 @@ const Card: FC<CardProps> = ({
       <p>{security}</p>
       {help && <div className="card-separator" />}
       <p>{help}</p>
-      <Button title={buttonTitle || 'Reserveer nu'} to={link} />
+      <Button title={buttonTitle || 'Selecteer'} to={link} />
     </div>
   );
 };

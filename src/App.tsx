@@ -8,10 +8,12 @@ import Expo from './pages/Expo';
 import NavBar from './components/NavBar';
 import BookingBox from './pages/BookingBox';
 import BookingBar from './pages/BookingBar';
+import ScrollToTop from './components/ScrollToTop';
 
 const App = () => {
   return (
     <Router basename="/pilar">
+      <ScrollToTop />
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />

@@ -290,6 +290,7 @@ const BookingBox = () => {
                 type="button"
                 onClick={addDate}
                 className="add-date-btn"
+                style={{ bottom: `${-(formData.dates.length - 1) * 80}px` }}
               />
             )}
           </div>
@@ -409,12 +410,12 @@ const BookingBox = () => {
         {formData.package !== 'Essential' && (
           <>
             <SwitchButton
-              title="Contactpersoon verschillend van degene vermeld boven voor technische informatie?"
+              title="De contactpersoon voor technische vragen is dezelfdec als hierboven vermeld."
               name="different-contact-person"
               value={hasTechnical}
               onChange={(value) => setHasTechnical(value)}
             />
-            {hasTechnical && (
+            {!hasTechnical && (
               <>
                 <Input
                   title="Voornaam "

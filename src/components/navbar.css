@@ -4,8 +4,19 @@
   left: 0;
   width: 100%;
   display: flex;
-  backdrop-filter: blur(10px);
   z-index: 2;
+}
+
+.blurred-square {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,.5) 100%);
 }
 
 .pilar-logo-horizontal {

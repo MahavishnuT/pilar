@@ -22,7 +22,7 @@ const Bar = () => {
             volledig privé worden afgehuurd tot 2u ’s nachts, inclusief
             professioneel barpersoneel.
           </p>
-          <Button title="Reserveer nu" isLightBg to="/bar-booking" />
+          <Button title="Selecteer" isLightBg to="/bar-booking" />
         </div>
       </div>
       <Section

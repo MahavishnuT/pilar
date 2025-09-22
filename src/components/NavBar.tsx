@@ -6,6 +6,7 @@ const NavBar = () => {
 
   return (
     <div className="navbar">
+      <div className='blurred-square'/>
       <Link to="/">
         <img
           src={pilarHorizontal}

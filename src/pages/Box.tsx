@@ -25,7 +25,7 @@ const Box = () => {
             evenement, Pilar Box zorgt voor een onvergetelijke beleving voor
             artiesten en publiek.
           </p>
-          <Button title="Reserveer nu" isLightBg to="/box-booking" />
+          <Button title="Selecteer" isLightBg to="/box-booking" />
         </div>
       </div>
       <Section
@@ -59,52 +59,52 @@ const Box = () => {
       <div className="cards-container">
         <Card
           title="Essential"
-          duration="4h (Between 8h - 22h)"
-          extra="Optionnal extra time, +2 hours or +4 hours"
-          light="Basic setup, no technician. Only standard lightning and sound through HMDI connection"
-          projection="Screen projection included"
-          backstage="Access to backstage kitchen only"
+          duration="4u (Tussen 8u- 22u)"
+          extra="Optionele extra tijd, +2 uur of +4 uur"
+          light="Basis setup, geen technieker. Standaard basis belichting en geluid via HDMI aansluiting"
+          projection="Schermprojectie inbegrepen"
+          backstage="Alleen toegang tot de keuken van de backstage"
           link="/box-booking"
         />
         <Card
           title="Essential plus"
-          duration="4h (Between 8h - 22h)"
-          extra="Optionnal extra time, +2 hours or +4 hours"
-          light="Technician will be present throughout the event. A standard sound setup and lightning plan will be available"
-          projection="Screen projection included"
-          backstage="Access included to the backstage"
-          bar="Bar : optional (included)"
+          duration="4u (Tussen 8u - 22u)"
+          extra="Optionele extra tijd, +2 uur of +4 uur"
+          light="Geluidstechnieker aanwezig gedurende het event. Standaard lichtplan inbegrepen"
+          projection="Schermprojectie inbegrepen"
+          backstage="Toegang tot de backstage inbegrepen"
+          bar="Bar inbegrepen (optioneel)"
           link="/box-booking"
         />
         <Card
           title="Premium"
-          duration="8h (Between 8h - 22h)"
-          extra="Optionnal extra time, +2 hours or +4 hours"
-          light="Technician will be present throughout the event. A standard sound setup and lightning plan will be available"
-          projection="Screen projection included"
-          backstage="Access included to the backstage"
-          bar="Bar : optional (included)"
+          duration="8u (Tussen 8u - 22u)"
+          extra="Optionele extra tijd, +2 uur of +4 uur"
+          light="Geluidstechnieker aanwezig gedurende het event. Gepersonaliseerd lichtplan inbegrepen"
+          projection="Schermprojectie inbegrepen"
+          backstage="Toegang tot de backstage inbegrepen"
+          bar="Bar inbegrepen"
           link="/box-booking"
         />
         <Card
           title="Nightlife"
-          duration="10h (Between 18h - 6h)"
-          light="Technician will be present throughout the event. A standard sound setup and lightning plan will be available"
-          projection="Screen projection included"
-          backstage="Access included to the backstage"
-          bar="Bar included"
-          security="Security included"
+          duration="10u (Tussen 18u - 6u)"
+          light="Geluidstechnieker aanwezig gedurende het event. Gepersonaliseerd lichtplan inbegrepen"
+          projection="Schermprojectie inbegrepen"
+          backstage="Toegang tot de backstage inbegrepen"
+          bar="Bar inbegrepen"
+          security="Security inbegrepen"
           link="/box-booking"
         />
         <Card
           title="Experience"
-          duration="14h (Between 8h - 22h)"
-          light="Technician will be present throughout the event. A standard sound setup and lightning plan will be available"
-          projection="Screen projection included"
-          backstage="Access included to the backstage"
-          bar="Bar included"
-          security="Security included"
-          help="Extra help included"
+          duration="14u (Tussen 8u - 22u)"
+          light="Geluidstechnieker aanwezig gedurende het event. Gepersonaliseerd lichtplan inbegrepen"
+          projection="Schermprojectie inbegrepen"
+          backstage="Toegang tot de backstage inbegrepen"
+          bar="Bar inbegrepen"
+          security="Security inbegrepen"
+          help="Extra help inbegrepen"
           link="/box-booking"
         />
       </div>

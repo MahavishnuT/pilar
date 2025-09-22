@@ -250,6 +250,7 @@ const BookingBar = () => {
                 type="button"
                 onClick={addDate}
                 className="add-date-btn"
+                style={{ bottom: `${-(formData.dates.length - 1) * 80}px` }}
               />
             )}
           </div>

@@ -51,3 +51,7 @@ a {
   text-decoration: none;
 }
 
+input, select, textarea, button {
+  background-color: #2B2A33;
+}
+
