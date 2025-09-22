@@ -343,7 +343,7 @@ const BookingBox = () => {
         {(formData.package == 'Essential Plus' ||
           formData.package == 'Premium') && (
           <SwitchButton
-            title="Wilt u gebruik maken van onze bar?"
+            title="Ik gebruik maken van de foyer bar"
             name="bar-option"
             value={formData.hasBar}
             onChange={(value) => updateFormData('hasBar', value)}
@@ -410,7 +410,7 @@ const BookingBox = () => {
         {formData.package !== 'Essential' && (
           <>
             <SwitchButton
-              title="De contactpersoon voor technische vragen is dezelfdec als hierboven vermeld."
+              title="De contactpersoon voor technische vragen is dezelfde als hierboven vermeld."
               name="different-contact-person"
               value={hasTechnical}
               onChange={(value) => setHasTechnical(value)}
