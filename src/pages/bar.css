@@ -18,7 +18,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .pilar-bar-text_title {
@@ -45,7 +45,6 @@
   display: flex;
   justify-content: center;
   gap: 2rem;
-  flex-wrap: wrap;
   margin: 3rem 1rem;
 }
 
@@ -62,4 +61,29 @@
 
 .facilities-container ul li {
   list-style: none;
+}
+
+@media (max-width: 768px) {
+  .pilar-bar-img {
+    object-fit: cover;
+  }
+
+  .pilar-bar-text {
+    width: 90%;
+  }
+
+  .cards-title {
+    text-align: center;
+  }
+
+  .prout-container {
+    overflow-x: auto;
+    width: 100vw;
+  }
+
+  .cards-container {
+    overflow-x: auto;
+    width: 100vw;
+    flex-wrap: nowrap;
+  }
 }

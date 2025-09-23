@@ -9,7 +9,9 @@ import NavBar from './components/NavBar';
 import BookingBox from './pages/BookingBox';
 import BookingBar from './pages/BookingBar';
 import ScrollToTop from './components/ScrollToTop';
+import emailjs from '@emailjs/browser';
 
+emailjs.init('sCKc6CAwPBp3BdFLn');
 const App = () => {
   return (
     <Router basename="/pilar">

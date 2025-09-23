@@ -47,7 +47,9 @@
   object-fit: cover;
   opacity: 0;
   transform: translateX(100%);
-  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+  transition:
+    transform 0.4s ease-in-out,
+    opacity 0.4s ease-in-out;
 }
 
 .carrousel-image.active {
@@ -108,5 +110,25 @@
   100% {
     opacity: 0;
     z-index: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .carrousel-titles {
+    flex-direction: column;
+  }
+
+  .carrousel-title {
+    max-height: 150px;
+  }
+
+  .carrousel-image {
+    transition:
+      transform 0.8s ease-in-out,
+      opacity 0.8s ease-in-out;
+  }
+
+  .pilar-logo-vertical {
+    width: 50%;
   }
 }

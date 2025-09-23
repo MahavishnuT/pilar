@@ -8,7 +8,6 @@ import box_4 from '../assets/pictures/box/box_4.jpg';
 import box_5 from '../assets/pictures/box/box_5.jpg';
 import './box.css';
 import Card from '../components/Card';
-import Button from '../components/Button';
 const Box = () => {
   return (
     <section className="pilar-box">
@@ -25,7 +24,6 @@ const Box = () => {
             evenement, Pilar Box zorgt voor een onvergetelijke beleving voor
             artiesten en publiek.
           </p>
-          <Button title="Selecteer" isLightBg to="/box-booking" />
         </div>
       </div>
       <Section

@@ -17,12 +17,34 @@ const carrouselImages = [
 const Home = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [previousIndex, setPreviousIndex] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    if (hoveredIndex !== null) {
-      setPreviousIndex(hoveredIndex);
-    }
-  }, [hoveredIndex]);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    if (!isMobile || hoveredIndex !== null) return;
+
+    const interval = setInterval(() => {
+      setPreviousIndex((currentIndex) => {
+        const nextIndex =
+          currentIndex === null
+            ? 1
+            : (currentIndex + 1) % carrouselImages.length;
+        setHoveredIndex(nextIndex);
+        return nextIndex;
+      });
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [isMobile, hoveredIndex]);
 
   const getTransitionClass = (index: number) => {
     if (hoveredIndex === null) {
@@ -73,7 +95,7 @@ const Home = () => {
         <div className="carrousel-titles">
           {carrouselImages.map((image, index) => (
             <Link
-              to={"/" + image.key.toLowerCase().replace(/\s+/g, '-')}
+              to={'/' + image.key.toLowerCase().replace(/\s+/g, '-')}
               key={image.key}
               className="carrousel-title"
               onMouseEnter={() => setHoveredIndex(index)}
@@ -86,6 +108,6 @@ const Home = () => {
       </div>
     </section>
   );
-}
+};
 
 export default Home;

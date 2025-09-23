@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import type { FormEvent } from 'react';
+import emailjs from '@emailjs/browser';
 
 import Input from '../components/Input';
 import PhoneInputs from '../components/PhoneInput';
@@ -188,25 +189,51 @@ const BookingBox = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('/api/email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await emailjs.send(
+        'service_ct1gq57',
+        'template_9r3nzs6',
+        {
+          name: formData.firstName + ' ' + formData.lastName, // Ajout de name
+          time: new Date().toLocaleString('fr-FR', {
+            timeZone: 'Europe/Brussels',
+          }),
+          message: formData.eventDescription, // Utilisation de la description comme message
+          from_name: formData.firstName + ' ' + formData.lastName,
+          from_email: formData.email,
+          phone: formData.phone,
+          company: formData.companyName,
+          billing_address: formData.billingAddress,
+          organization: formData.organization,
+          dates: formData.dates.filter((date) => date).join(', '), // Filtrer les dates vides
+          event_name: formData.eventName,
+          event_description: formData.eventDescription,
+          package_type: formData.package,
+          event_type: formData.eventType,
+          has_bar: formData.hasBar ? 'Oui' : 'Non',
+          start_time: `${String(formData.startHour).padStart(2, '0')}:${String(
+            formData.startMinute
+          ).padStart(2, '0')}`,
+          end_time: `${String(formData.endHour).padStart(2, '0')}:${String(
+            formData.endMinute
+          ).padStart(2, '0')}`,
+          visitors: formData.visitors,
+          technical_contact: hasTechnical
+            ? 'Même que contact principal'
+            : 'Différent',
+          tech_name: hasTechnical
+            ? ''
+            : formData.firstNameTech + ' ' + formData.lastNameTech,
+          tech_email: hasTechnical ? '' : formData.emailTech,
+          tech_phone: hasTechnical ? '' : formData.phoneTech,
         },
-        body: JSON.stringify({
-          firstName: formData.firstName,
-          email: formData.email,
-        }),
-      });
+        'sCKc6CAwPBp3BdFLn'
+      );
 
-      if (!response.ok) {
-        throw new Error('Failed to send email');
+      if (response.status === 200) {
+        setFormData(initialFormState);
+        setShowPopUp(true);
       }
-
-      setFormData(initialFormState);
-      setShowPopUp(true);
     } catch (error) {
-      setFormData(initialFormState);
       console.error('Error sending email:', error);
       alert('Failed to send email');
     }

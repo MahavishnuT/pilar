@@ -30,3 +30,31 @@
 .section-img {
   width: 50%;
 }
+
+@media (max-width: 768px) {
+  .section {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .section-text {
+    width: 100%;
+    margin: 0;
+  }
+
+  .section-text_description {
+    width: 90%;
+    margin: 0 auto;
+    font-size: .9rem;
+  }
+
+  .section-text_title {
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+    font-size: 2rem;
+  }
+
+  .section-img {
+    width: 100%;
+  }
+}

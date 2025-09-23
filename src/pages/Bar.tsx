@@ -5,7 +5,6 @@ import bar_2 from '../assets/pictures/bar/bar_2.jpg';
 import bar_3 from '../assets/pictures/bar/bar_3.jpg';
 import './bar.css';
 import Card from '../components/Card';
-import Button from '../components/Button';
 const Bar = () => {
   return (
     <section className="pilar-bar">
@@ -22,7 +21,6 @@ const Bar = () => {
             volledig privé worden afgehuurd tot 2u ’s nachts, inclusief
             professioneel barpersoneel.
           </p>
-          <Button title="Selecteer" isLightBg to="/bar-booking" />
         </div>
       </div>
       <Section
@@ -101,6 +99,21 @@ die net dat tikkeltje meer vragen."
           <li>Rolstoel toegankelijk</li>
           <li>Tot 70 personen zittend of 120 personen staand</li>
         </ul>
+      </div>
+      <div className="prout-container">
+        <span>PROUT</span>
+        <span>PROUT</span>
+        <span>PROUT</span>
+        <span>PROUT</span>
+        <span>PROUT</span>
+        <span>PROUT</span>
+        <span>PROUT</span>
+        <span>PROUT</span>
+        <span>PROUT</span>
+        <span>PROUT</span>
+        <span>PROUT</span>
+        <span>PROUT</span>
+        <span>PROUT</span>
       </div>
     </section>
   );
