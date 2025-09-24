@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import type { FormEvent } from 'react';
-import emailjs from '@emailjs/browser';
+import type { BookingForm } from '../utils/types/bookingForm';
 
 import Input from '../components/Input';
 import PhoneInputs from '../components/PhoneInput';
@@ -11,6 +11,7 @@ import SwitchButton from '../components/SwitchButton';
 import PopUp from '../components/PopUp';
 
 import BackgroundBarImg from '../assets/pictures/bar/bookingBG.jpg';
+import { submitForm } from '../utils/submitForm';
 
 import './booking.css';
 
@@ -36,31 +37,6 @@ const EVENT_TYPE_OPTIONS = [
   'Lezing / Conferentie',
   'Film voorstelling',
 ];
-
-interface BookingForm {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  companyName: string;
-  billingAddress: string;
-  organization: string;
-  dates: string[];
-  eventName: string;
-  eventDescription: string;
-  package: string;
-  eventType: string;
-  hasBar: boolean;
-  startHour: number;
-  startMinute: number;
-  endHour: number;
-  endMinute: number;
-  visitors: number;
-  firstNameTech: string;
-  lastNameTech: string;
-  emailTech: string;
-  phoneTech: string;
-}
 
 const initialFormState: BookingForm = {
   firstName: '',
@@ -188,53 +164,12 @@ const BookingBox = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    try {
-      const response = await emailjs.send(
-        'service_ct1gq57',
-        'template_9r3nzs6',
-        {
-          name: formData.firstName + ' ' + formData.lastName, // Ajout de name
-          time: new Date().toLocaleString('fr-FR', {
-            timeZone: 'Europe/Brussels',
-          }),
-          message: formData.eventDescription, // Utilisation de la description comme message
-          from_name: formData.firstName + ' ' + formData.lastName,
-          from_email: formData.email,
-          phone: formData.phone,
-          company: formData.companyName,
-          billing_address: formData.billingAddress,
-          organization: formData.organization,
-          dates: formData.dates.filter((date) => date).join(', '), // Filtrer les dates vides
-          event_name: formData.eventName,
-          event_description: formData.eventDescription,
-          package_type: formData.package,
-          event_type: formData.eventType,
-          has_bar: formData.hasBar ? 'Oui' : 'Non',
-          start_time: `${String(formData.startHour).padStart(2, '0')}:${String(
-            formData.startMinute
-          ).padStart(2, '0')}`,
-          end_time: `${String(formData.endHour).padStart(2, '0')}:${String(
-            formData.endMinute
-          ).padStart(2, '0')}`,
-          visitors: formData.visitors,
-          technical_contact: hasTechnical
-            ? 'Même que contact principal'
-            : 'Différent',
-          tech_name: hasTechnical
-            ? ''
-            : formData.firstNameTech + ' ' + formData.lastNameTech,
-          tech_email: hasTechnical ? '' : formData.emailTech,
-          tech_phone: hasTechnical ? '' : formData.phoneTech,
-        },
-        'sCKc6CAwPBp3BdFLn'
-      );
+    const success = await submitForm(formData, 'template_9r3nzs6', hasTechnical);
 
-      if (response.status === 200) {
-        setFormData(initialFormState);
-        setShowPopUp(true);
-      }
-    } catch (error) {
-      console.error('Error sending email:', error);
+    if (success) {
+      setFormData(initialFormState);
+      setShowPopUp(true);
+    } else {
       alert('Failed to send email');
     }
   };

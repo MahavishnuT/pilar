@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import type { FormEvent } from 'react';
+import type { BookingForm } from '../utils/types/bookingForm';
 
 import Input from '../components/Input';
 import PhoneInputs from '../components/PhoneInput';
@@ -12,6 +13,7 @@ import PopUp from '../components/PopUp';
 import './booking.css';
 
 import BackgroundBarImg from '../assets/pictures/bar/bookingBG.jpg';
+import { submitForm } from '../utils/submitForm';
 
 const ORGANIZATION_OPTIONS = [
   'VUB',
@@ -21,27 +23,6 @@ const ORGANIZATION_OPTIONS = [
 ];
 
 const PACKAGE_OPTIONS = ['Essential', 'Premium', 'Experience'];
-
-interface BookingForm {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  companyName: string;
-  billingAddress: string;
-  organization: string;
-  dates: string[];
-  eventName: string;
-  eventDescription: string;
-  package: string;
-  eventType: string;
-  hasBar: boolean;
-  startHour: number;
-  startMinute: number;
-  endHour: number;
-  endMinute: number;
-  visitors: number;
-}
 
 const initialFormState: BookingForm = {
   firstName: '',
@@ -145,29 +126,13 @@ const BookingBar = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted');
 
-    try {
-      const response = await fetch('/api/email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          firstName: formData.firstName,
-          email: formData.email,
-        }),
-      });
+    const success = await submitForm(formData, 'template_9oiid8r');
 
-      if (!response.ok) {
-        throw new Error('Failed to send email');
-      }
-
+    if (success) {
       setFormData(initialFormState);
       setShowPopUp(true);
-    } catch (error) {
-      setFormData(initialFormState);
-      console.error('Error sending email:', error);
+    } else {
       alert('Failed to send email');
     }
   };
@@ -281,7 +246,8 @@ const BookingBar = () => {
           required
         />
 
-        {(formData.package === 'Premium' || formData.package === 'Experience') && (
+        {(formData.package === 'Premium' ||
+          formData.package === 'Experience') && (
           <SwitchButton
             title="Wenst u gebruik te maken van een professionele audio installatie en Pioneer DJ-set?"
             name="bar-option"
