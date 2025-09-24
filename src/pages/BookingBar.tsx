@@ -9,7 +9,7 @@ import Button from '../components/Button';
 import SwitchButton from '../components/SwitchButton';
 import PopUp from '../components/PopUp';
 
-import './bookingBar.css';
+import './booking.css';
 
 import BackgroundBarImg from '../assets/pictures/bar/bookingBG.jpg';
 

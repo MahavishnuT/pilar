@@ -35,3 +35,13 @@
   width: 100%;
   height: 100vh;
 }
+
+@media (max-width: 768px) {
+  .pilar-box-img {
+    object-fit: cover;
+  }
+
+  .pilar-box-text {
+    width: 90%;
+  }
+}

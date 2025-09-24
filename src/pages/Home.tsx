@@ -30,17 +30,14 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    if (!isMobile || hoveredIndex !== null) return;
+    if (!isMobile) return;
 
     const interval = setInterval(() => {
-      setPreviousIndex((currentIndex) => {
-        const nextIndex =
-          currentIndex === null
-            ? 1
-            : (currentIndex + 1) % carrouselImages.length;
-        setHoveredIndex(nextIndex);
-        return nextIndex;
-      });
+      const nextIndex =
+        hoveredIndex === null ? 1 : (hoveredIndex + 1) % carrouselImages.length;
+
+      setPreviousIndex(hoveredIndex);
+      setHoveredIndex(nextIndex);
     }, 2000);
 
     return () => clearInterval(interval);

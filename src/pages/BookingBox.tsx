@@ -12,7 +12,7 @@ import PopUp from '../components/PopUp';
 
 import BackgroundBarImg from '../assets/pictures/bar/bookingBG.jpg';
 
-import './bookingBox.css';
+import './booking.css';
 
 const ORGANIZATION_OPTIONS = [
   'VUB',

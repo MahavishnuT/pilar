@@ -95,3 +95,11 @@
 .add-date-btn:hover {
   transform: scale(1.1);
 }
+
+@media (max-width: 768px) {
+  .booking-section form {
+    padding: 1.5rem;
+    width: 75%;
+  }
+  
+}
