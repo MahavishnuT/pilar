@@ -76,14 +76,19 @@
     text-align: center;
   }
 
-  .prout-container {
-    overflow-x: auto;
-    width: 100vw;
-  }
-
   .cards-container {
     overflow-x: auto;
-    width: 100vw;
     flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+  .facilities-container {
+    margin-bottom: 1rem;
+  }
+
+  .facilities-container ul {
+    padding: 0;
+    margin: 0 auto;
+    width: 80%;
   }
 }

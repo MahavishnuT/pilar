@@ -100,21 +100,6 @@ die net dat tikkeltje meer vragen."
           <li>Tot 70 personen zittend of 120 personen staand</li>
         </ul>
       </div>
-      <div className="prout-container">
-        <span>PROUT</span>
-        <span>PROUT</span>
-        <span>PROUT</span>
-        <span>PROUT</span>
-        <span>PROUT</span>
-        <span>PROUT</span>
-        <span>PROUT</span>
-        <span>PROUT</span>
-        <span>PROUT</span>
-        <span>PROUT</span>
-        <span>PROUT</span>
-        <span>PROUT</span>
-        <span>PROUT</span>
-      </div>
     </section>
   );
 };

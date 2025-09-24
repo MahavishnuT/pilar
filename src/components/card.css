@@ -21,7 +21,7 @@
 
 .card-container p {
   margin: 0.5rem 0;
-  font-size: .9rem;
+  font-size: clamp(.6rem, 2.5vw, .9rem);
   min-height: 2rem;
   display: flex;
   justify-content: center;
@@ -39,7 +39,7 @@
 
 .card-title {
   font-family: Pilar;
-  font-size: 1.6rem;
+  font-size: clamp(.8rem, 2.5vw, 1.6rem);
 }
 
 .card-separator {
@@ -47,4 +47,24 @@
   height: 1px;
   background-color: black;
   margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .card-container {
+    padding: .5rem;
+    min-width: 10rem;
+    max-height: 25rem;
+  }
+
+  .card-separator {
+    height: 1px; 
+  }
+
+  .card-container p {
+    margin: 0.1rem 0;
+  }
+
+  .card-container .center span {
+    font-size: .9rem;
+  }
 }
