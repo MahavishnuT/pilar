@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import './select.css';
 
 interface SelectProps {
@@ -16,11 +17,11 @@ const Select: FC<SelectProps> = ({
   value,
   required,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="select-container">
-      <label htmlFor={`select-${title}`}>
-        {title}
-      </label>
+      <label htmlFor={`select-${title}`}>{title}</label>
       <select
         className="select"
         id={`select-${title}`}
@@ -28,7 +29,7 @@ const Select: FC<SelectProps> = ({
         onChange={(e) => onChange?.(e.target.value)}
         required={required}
       >
-        <option value="">Selecteer een optie</option>
+        <option value="">{t('selectDefaultOption')}</option>
         {optionsList.map((option) => (
           <option key={option} value={option}>
             {option}

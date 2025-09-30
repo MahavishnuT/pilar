@@ -8,103 +8,103 @@ import box_4 from '../assets/pictures/box/box_4.jpg';
 import box_5 from '../assets/pictures/box/box_5.jpg';
 import './box.css';
 import Card from '../components/Card';
+import { useTranslation } from 'react-i18next';
 const Box = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="pilar-box">
       <div className="pilar-box-hero">
         <img src={venueIntro} alt="pilar box" className="pilar-box-img" />
         <div className="pilar-box-text">
           <h1 className="pilar-box-text_title">Pilar Box</h1>
-          <p className="pilar-box-text_intro">
-            Pilar Box is de ultieme locatie voor concerten,
-            theatervoorstellingen, filmvertoningen en nightlife-events. Met een
-            professioneel geluids- en lichtsysteem en een capaciteit tot 300
-            personen biedt de zaal een perfecte combinatie van techniek, sfeer
-            en comfort. Of het nu gaat om een intiem optreden of een groots
-            evenement, Pilar Box zorgt voor een onvergetelijke beleving voor
-            artiesten en publiek.
-          </p>
+          <p className="pilar-box-text_intro">{t('boxHero')}</p>
         </div>
       </div>
-      <Section
-        title="Essential"
-        img={box_1}
-        description="Box Essential biedt je 4 uur exclusieve toegang tot onze concertzaal – de perfecte setting voor conferenties, lezingen of filmvertoningen. Je sluit eenvoudig je eigen computer aan via HDMI op ons professioneel audiosysteem en maakt gebruik van de sfeervolle basisverlichting. Alles is gebruiksklaar en intuïtief, zodat je zonder technieker moeiteloos je evenement in goede banen leidt. Optioneel kan je de duur van je event uitbreiden in schijven van 2 uur."
-      />
+      <Section title="Essential" img={box_1} description={t('boxEssential')} />
       <Section
         title="Essential Plus"
         img={box_2}
-        description="Essential Plus is de ideale keuze voor wie de concertzaal enkele uren wil gebruiken mét de ondersteuning van een geluidstechnieker. Je geniet 4 uur exclusieve toegang, inclusief een krachtig audiosysteem, professionele belichting met standaard lichtplan en de aanwezigheid van een ervaren geluids- en lichttechnieker die alles voor je in goede banen leidt."
+        description={t('boxEssentialPlus')}
         left
       />
-      <Section
-        title="Premium"
-        img={box_3}
-        description="Box Premium biedt jou en je bezoekers de ideale setting voor een onvergetelijke concert- of theatervoorstelling. Je krijgt tot 8 uur lang exclusieve toegang tot onze volledig uitgeruste zaal, waar indrukwekkende licht- en geluidsbeleving je evenement tot leven brengen. Een ervaren technicus ondersteunt je met professionele audio en verlichting, zodat elk detail tot in de puntjes klopt."
-      />
+      <Section title="Premium" img={box_3} description={t('boxPremium')} />
       <Section
         title="Experience"
         img={box_4}
-        description="Box Experience biedt alle troeven van het Premium-pakket, maar dan uitgebreid tot 14 uur – tot uiterlijk 2u ’s ochtends. Ideaal voor evenementen die een volledige dag beslaan en tot in de late uurtjes doorgaan. Een ervaren geluids- en lichttechnieker ondersteunt je doorheen het hele evenement, en indien gewenst staan twee medewerkers klaar om je extra bij te staan waar nodig."
+        description={t('boxExperience')}
         left
       />
-      <Section
-        title="Nightlife"
-        img={box_5}
-        description="Box Nightlife geeft je exclusieve toegang tot onze zaal tot 6 uur ’s ochtends. Professionele licht- en geluidsbegeleiding zorgen voor een feestbeleving op topniveau, terwijl een ervaren securityteam instaat voor een veilig en zorgeloos verloop. Achter de bar staan bekwame barmannen en -vrouwen klaar om je gasten de hele nacht van drankjes te voorzien."
-      />
-      <h2 className="cards-title">Vergelijk onze pakketten</h2>
+      <Section title="Nightlife" img={box_5} description={t('boxNightlife')} />
+      <h2 className="cards-title">{t('cardsTitle')}</h2>
       <div className="cards-container">
         <Card
           title="Essential"
-          duration="4u (Tussen 8u- 22u)"
-          extra="Optionele extra tijd, +2 uur of +4 uur"
-          light="Basis setup, geen technieker. Standaard basis belichting en geluid via HDMI aansluiting"
-          projection="Schermprojectie inbegrepen"
-          backstage="Alleen toegang tot de keuken van de backstage"
+          duration={t('boxCardEssentialDuration')}
+          extra={t('boxCardEssentialExtra')}
+          light={t('boxCardEssentialLight')}
+          projection={t('boxCardEssentialProjection')}
+          backstage={t('boxCardEssentialBackstage')}
           link="/box-booking"
         />
         <Card
           title="Essential plus"
-          duration="4u (Tussen 8u - 22u)"
-          extra="Optionele extra tijd, +2 uur of +4 uur"
-          light="Geluidstechnieker aanwezig gedurende het event. Standaard lichtplan inbegrepen"
-          projection="Schermprojectie inbegrepen"
-          backstage="Toegang tot de backstage inbegrepen"
-          bar="Bar inbegrepen"
+          duration={t('boxCardEssentialPlusDuration')}
+          extra={t('boxCardEssentialPlusExtra')}
+          light={t('boxCardEssentialPlusLight')}
+          projection={t('boxCardEssentialPlusProjection')}
+          backstage={t('boxCardEssentialPlusBackstage')}
+          bar={t('boxCardEssentialPlusBar')}
           link="/box-booking"
         />
         <Card
           title="Premium"
-          duration="8u (Tussen 8u - 22u)"
-          extra="Optionele extra tijd, +2 uur of +4 uur"
-          light="Geluidstechnieker aanwezig gedurende het event. Gepersonaliseerd lichtplan inbegrepen"
-          projection="Schermprojectie inbegrepen"
-          backstage="Toegang tot de backstage inbegrepen"
-          bar="Bar inbegrepen"
+          duration={t('boxCardPremiumDuration')}
+          extra={t('boxCardPremiumExtra')}
+          light={t('boxCardPremiumLight')}
+          projection={t('boxCardPremiumProjection')}
+          backstage={t('boxCardPremiumBackstage')}
+          bar={t('boxCardPremiumBar')}
           link="/box-booking"
         />
         <Card
           title="Nightlife"
-          duration="10u (Tussen 18u - 6u)"
-          light="Geluidstechnieker aanwezig gedurende het event. Gepersonaliseerd lichtplan inbegrepen"
-          projection="Schermprojectie inbegrepen"
-          backstage="Toegang tot de backstage inbegrepen"
-          bar="Bar inbegrepen"
-          security="Security inbegrepen"
+          duration={t('boxCardNightlifeDuration')}
+          light={t('boxCardNightlifeLight')}
+          projection={t('boxCardNightlifeProjection')}
+          backstage={t('boxCardNightlifeBackstage')}
+          bar={t('boxCardNightlifeBar')}
+          security={t('boxCardNightlifeSecurity')}
           link="/box-booking"
         />
         <Card
           title="Experience"
-          duration="14u (Tussen 8u - 22u)"
-          light="Geluidstechnieker aanwezig gedurende het event. Gepersonaliseerd lichtplan inbegrepen"
-          projection="Schermprojectie inbegrepen"
-          backstage="Toegang tot de backstage inbegrepen"
-          bar="Bar inbegrepen"
-          security="Security inbegrepen"
-          help="Extra help inbegrepen"
+          duration={t('boxCardExperienceDuration')}
+          light={t('boxCardExperienceLight')}
+          projection={t('boxCardExperienceProjection')}
+          backstage={t('boxCardExperienceBackstage')}
+          bar={t('boxCardExperienceBar')}
+          security={t('boxCardExperienceSecurity')}
+          help={t('boxCardExperienceHelp')}
           link="/box-booking"
         />
+      </div>
+      <div className="facilities-container">
+        <h2 className="facilities-title">{t('facilitiesTitle')}</h2>
+        <ul>
+          <li>{t('facilitiesLight')}</li>
+          <li>{t('facilitiesCapacityBox')}</li>
+          <li>{t('facilitiesSize')}</li>
+          <li>{t('facilitiesExtendable')}</li>
+          <li>{t('facilitiesParking')}</li>
+          <li>{t('facilitiesWheelchair')}</li>
+          <li>{t('facilitiesFoyer')}</li>
+          <li>{t('facilitiesLockers')}</li>
+          <li>{t('facilitiesArtists')}</li>
+          <li>{t('facilitiesShower')}</li>
+          <li>{t('facilitiesKitchenBox')}</li>
+          <li>{t('facilitiesDock')}</li>
+        </ul>
       </div>
     </section>
   );

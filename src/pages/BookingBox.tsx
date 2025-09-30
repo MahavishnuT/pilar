@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import type { FormEvent } from 'react';
 import type { BookingForm } from '../utils/types/bookingForm';
+import { useTranslation } from 'react-i18next';
 
 import Input from '../components/Input';
 import PhoneInputs from '../components/PhoneInput';
@@ -15,13 +16,6 @@ import { submitForm } from '../utils/submitForm';
 
 import './booking.css';
 
-const ORGANIZATION_OPTIONS = [
-  'VUB',
-  'Commercieel bedrijf',
-  'VZW of sociaal / culturele organisatie',
-  'Individueel persoon',
-];
-
 const PACKAGE_OPTIONS = [
   'Essential',
   'Essential Plus',
@@ -30,40 +24,49 @@ const PACKAGE_OPTIONS = [
   'Nightlife',
 ];
 
-const EVENT_TYPE_OPTIONS = [
-  'Concert',
-  'Theater',
-  'Party',
-  'Lezing / Conferentie',
-  'Film voorstelling',
-];
-
-const initialFormState: BookingForm = {
-  firstName: '',
-  lastName: '',
-  email: '',
-  phone: '',
-  companyName: '',
-  billingAddress: '',
-  organization: '',
-  dates: [''],
-  eventName: '',
-  eventDescription: '',
-  package: '',
-  eventType: '',
-  hasBar: false,
-  startHour: 0,
-  startMinute: 0,
-  endHour: 0,
-  endMinute: 0,
-  visitors: 0,
-  firstNameTech: '',
-  lastNameTech: '',
-  emailTech: '',
-  phoneTech: '',
-};
-
 const BookingBox = () => {
+  const { t } = useTranslation();
+
+  const EVENT_TYPE_OPTIONS = [
+    t('eventTypeConcert'),
+    t('eventTypeTheater'),
+    t('eventTypeParty'),
+    t('eventTypeLecture'),
+    t('eventTypeFilm'),
+  ];
+
+  const initialFormState: BookingForm = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    companyName: '',
+    billingAddress: '',
+    organization: '',
+    dates: [''],
+    eventName: '',
+    eventDescription: '',
+    package: '',
+    eventType: '',
+    hasBar: false,
+    startHour: 0,
+    startMinute: 0,
+    endHour: 0,
+    endMinute: 0,
+    visitors: 0,
+    firstNameTech: '',
+    lastNameTech: '',
+    emailTech: '',
+    phoneTech: '',
+  };
+
+  const ORGANIZATION_OPTIONS = [
+    t('organizationVUB'),
+    t('organizationCompany'),
+    t('organizationNonProfit'),
+    t('organizationIndividual'),
+  ];
+
   const [formData, setFormData] = useState<BookingForm>(initialFormState);
   const [durationError, setDurationError] = useState<boolean>(false);
   const [showPopUp, setShowPopUp] = useState<boolean>(false);
@@ -164,7 +167,11 @@ const BookingBox = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    const success = await submitForm(formData, 'template_9r3nzs6', hasTechnical);
+    const success = await submitForm(
+      formData,
+      'template_9r3nzs6',
+      hasTechnical
+    );
 
     if (success) {
       setFormData(initialFormState);
@@ -178,33 +185,33 @@ const BookingBox = () => {
     <section className="booking-section">
       {showPopUp && (
         <PopUp
-          title="Bedankt voor uw aanvraag!"
-          text="Ons team zal binnen de 5 werkdagen contact met u opnemen."
+          title={t('bookingPopUpTitle')}
+          text={t('bookingPopUpText')}
           onClose={() => setShowPopUp(false)}
         />
       )}
       <img src={BackgroundBarImg} alt="" />
-      <h1 className="booking-title">Offerte</h1>
+      <h1 className="booking-title">{t('bookingTitle')}</h1>
       <form onSubmit={handleSubmit}>
         <Input
-          title="Voornaam "
-          placeholder="Voornaam"
+          title={t('bookingFirstName')}
+          placeholder={t('bookingFirstName')}
           type="text"
           value={formData.firstName}
           onChange={(value) => updateFormData('firstName', value)}
           required
         />
         <Input
-          title="Achternaam"
-          placeholder="Achternaam"
+          title={t('bookingLastName')}
+          placeholder={t('bookingLastName')}
           type="text"
           value={formData.lastName}
           onChange={(value) => updateFormData('lastName', value)}
           required
         />
         <Input
-          title="Email"
-          placeholder="Email"
+          title={t('bookingEmail')}
+          placeholder={t('bookingEmail')}
           type="email"
           value={formData.email}
           onChange={(value) => updateFormData('email', value)}
@@ -216,22 +223,22 @@ const BookingBox = () => {
           required
         />
         <Input
-          title="Bedrijfsnaam"
-          placeholder="Bedrijfsnaam"
+          title={t('bookingCompanyName')}
+          placeholder={t('bookingCompanyName')}
           type="text"
           value={formData.companyName}
           onChange={(value) => updateFormData('companyName', value)}
         />
         <Input
-          title="Facturatie adres"
-          placeholder="Facturatie adres"
+          title={t('bookingBillingAddress')}
+          placeholder={t('bookingBillingAddress')}
           type="text"
           value={formData.billingAddress}
           onChange={(value) => updateFormData('billingAddress', value)}
           required
         />
         <Select
-          title="Soort organisatie"
+          title={t('bookingOrganizationType')}
           optionsList={ORGANIZATION_OPTIONS}
           value={formData.organization}
           onChange={(value) => updateFormData('organization', value)}
@@ -241,7 +248,7 @@ const BookingBox = () => {
         <div className="dates-container">
           <div className="date-input-wrapper">
             <Input
-              title="Gewenste datum "
+              title={t('bookingDesiredDate')}
               type="date"
               value={formData.dates[0]}
               onChange={(value) => updateDate(0, value)}
@@ -260,7 +267,7 @@ const BookingBox = () => {
             <Input
               key={index}
               type="date"
-              title={`Alternatieve datum ${index + 1}`}
+              title={`${t('bookingAlternativeDate')} ${index + 1}`}
               value={date}
               onChange={(value) => updateDate(index + 1, value)}
             />
@@ -268,8 +275,8 @@ const BookingBox = () => {
         </div>
 
         <Input
-          title="Naam van uw evenement"
-          placeholder="Naam van uw evenement"
+          title={t('bookingEventName')}
+          placeholder={t('bookingEventName')}
           type="text"
           value={formData.eventName}
           onChange={(value) => updateFormData('eventName', value)}
@@ -277,15 +284,15 @@ const BookingBox = () => {
         />
 
         <Textarea
-          title="Beschrijf uw evenement"
-          placeholder="Beschrijf uw evenement"
+          title={t('bookingEventDescription')}
+          placeholder={t('bookingEventDescription')}
           value={formData.eventDescription}
           onChange={(value) => updateFormData('eventDescription', value)}
           required
         />
 
         <Select
-          title="Pakket"
+          title={t('bookingPackage')}
           optionsList={PACKAGE_OPTIONS}
           value={formData.package}
           onChange={(value) => updateFormData('package', value)}
@@ -294,7 +301,7 @@ const BookingBox = () => {
 
         {formData.package && (
           <Select
-            title="Type evenement"
+            title={t('bookingEventType')}
             optionsList={filteredEventTypes}
             value={formData.eventType}
             onChange={(value) => updateFormData('eventType', value)}
@@ -305,18 +312,18 @@ const BookingBox = () => {
         {(formData.package == 'Essential Plus' ||
           formData.package == 'Premium') && (
           <SwitchButton
-            title="Ik wil gebruik maken van de foyer bar"
+            title={t('bookingUseBar')}
             name="bar-option"
             value={formData.hasBar}
             onChange={(value) => updateFormData('hasBar', value)}
           />
         )}
 
-        <span>Tijdsduur</span>
+        <span>{t('bookingTimeSpan')}</span>
         <div className="duration-container">
           <div className="duration-subcontainer">
             <Input
-              title="vanaf"
+              title={t('bookingFrom')}
               type="number"
               min="0"
               max="23"
@@ -325,7 +332,7 @@ const BookingBox = () => {
               onChange={(value) => updateFormData('startHour', Number(value))}
             />
             <Input
-              title=":"
+              title={t('bookingColon')}
               type="number"
               min="0"
               max="59"
@@ -336,7 +343,7 @@ const BookingBox = () => {
           </div>
           <div className="duration-subcontainer">
             <Input
-              title="tot"
+              title={t('bookingTo')}
               type="number"
               min="0"
               max="23"
@@ -345,7 +352,7 @@ const BookingBox = () => {
               onChange={(value) => updateFormData('endHour', Number(value))}
             />
             <Input
-              title=":"
+              title={t('bookingColon')}
               type="number"
               min="0"
               max="59"
@@ -356,12 +363,10 @@ const BookingBox = () => {
           </div>
         </div>
         {durationError && (
-          <span className="error-msg">
-            Essential and Essential Plus packages cannot exceed 8 hours
-          </span>
+          <span className="error-msg">{t('bookingDurationError')}</span>
         )}
         <Input
-          title="Geschat aantal bezoekers (maximaal 300)"
+          title={t('bookingMaxVisitors')}
           type="number"
           min="1"
           max="300"
@@ -372,7 +377,7 @@ const BookingBox = () => {
         {formData.package !== 'Essential' && (
           <>
             <SwitchButton
-              title="De contactpersoon voor technische vragen is dezelfde als hierboven vermeld"
+              title={t('bookingBoxTechnicalContact')}
               name="different-contact-person"
               value={hasTechnical}
               onChange={(value) => setHasTechnical(value)}
@@ -380,22 +385,22 @@ const BookingBox = () => {
             {!hasTechnical && (
               <>
                 <Input
-                  title="Voornaam "
-                  placeholder="Voornaam"
+                  title={t('bookingFirstName')}
+                  placeholder={t('bookingFirstName')}
                   type="text"
                   value={formData.firstNameTech}
                   onChange={(value) => updateFormData('firstNameTech', value)}
                 />
                 <Input
-                  title="Achternaam"
-                  placeholder="Achternaam"
+                  title={t('bookingLastName')}
+                  placeholder={t('bookingLastName')}
                   type="text"
                   value={formData.lastNameTech}
                   onChange={(value) => updateFormData('lastNameTech', value)}
                 />
                 <Input
-                  title="Email"
-                  placeholder="Email"
+                  title={t('bookingEmail')}
+                  placeholder={t('bookingEmail')}
                   type="email"
                   value={formData.emailTech}
                   onChange={(value) => updateFormData('emailTech', value)}
@@ -409,14 +414,11 @@ const BookingBox = () => {
           </>
         )}
         <Button
-          title="Verstuur"
+          title={t('bookingSubmit')}
           className="booking-button"
           isLightBg
           isSubmit
           disabled={!isFormValid()}
-          onClick={() => {
-            setShowPopUp(true);
-          }}
         />
       </form>
     </section>

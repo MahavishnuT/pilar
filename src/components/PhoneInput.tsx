@@ -1,5 +1,6 @@
 import type { FC } from 'react';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import PhoneInput from 'react-phone-number-input';
 
 import 'react-phone-number-input/style.css';
@@ -12,6 +13,7 @@ interface PhoneInputsProps {
 }
 
 const PhoneInputs: FC<PhoneInputsProps> = ({ value, onChange, required }) => {
+  const { t } = useTranslation();
   const [phoneValue, setPhoneValue] = useState<string | undefined>(value);
 
   const handleChange = (newValue: string | undefined) => {
@@ -21,9 +23,9 @@ const PhoneInputs: FC<PhoneInputsProps> = ({ value, onChange, required }) => {
 
   return (
     <div className="phoneInput-container">
-      <label htmlFor="phoneInput-label">Telefoonnummer</label>
+      <label htmlFor="phoneInput-label">{t('bookingPhone')}</label>
       <PhoneInput
-        placeholder="Enter phone number"
+        placeholder={t('bookingPhone')}
         countryCallingCodeEditable={false}
         international
         defaultCountry="BE"

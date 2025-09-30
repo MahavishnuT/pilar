@@ -1,0 +1,29 @@
+.language-selector {
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 0.3rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.language-selector:focus {
+  outline: none;
+}
+
+.language-selector option {
+  background-color: black;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .language-selector {
+    right: 1rem;
+    font-size: 0.8rem;
+  }
+}
