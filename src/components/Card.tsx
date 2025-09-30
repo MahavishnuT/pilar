@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import './card.css';
 import Button from './Button';
+import { useTranslation } from 'react-i18next';
 
 interface CardProps {
   title: string;
@@ -13,7 +14,6 @@ interface CardProps {
   security?: string;
   help?: string;
   link?: string;
-  buttonTitle?: string;
 }
 
 const Card: FC<CardProps> = ({
@@ -27,8 +27,9 @@ const Card: FC<CardProps> = ({
   security,
   help,
   link,
-  buttonTitle,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="card-container">
       <h2 className="card-title">{title}</h2>
@@ -47,7 +48,7 @@ const Card: FC<CardProps> = ({
       <p>{security}</p>
       {help && <div className="card-separator" />}
       <p>{help}</p>
-      <Button title={buttonTitle || 'Selecteer'} to={link} />
+      <Button title={t('buttonTitle')} to={link} />
     </div>
   );
 };

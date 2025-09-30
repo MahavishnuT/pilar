@@ -18,7 +18,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .pilar-bar-text_title {
@@ -51,16 +51,23 @@
 .facilities-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 5rem;
+  margin-left: 3rem;
 }
 
 .facilities-title {
   font-family: Pilar;
+  font-size: 3rem;
+}
+
+.facilities-container ul {
+  padding-left: 0;
 }
 
 .facilities-container ul li {
   list-style: none;
+  font-size: 1.2rem;
 }
 
 @media (max-width: 768px) {
@@ -84,11 +91,13 @@
 
   .facilities-container {
     margin-bottom: 1rem;
+    font-size: 2rem;
   }
 
   .facilities-container ul {
     padding: 0;
     margin: 0 auto;
     width: 80%;
+    font-size: .9rem;
   }
 }

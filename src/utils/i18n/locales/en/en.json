@@ -83,7 +83,7 @@
   "facilitiesDock": "Loading and unloading dock for artist equipment",
 
 
-  "bookingTitle": "Booking",
+  "bookingTitle": "Request a quote",
   "bookingFirstName": "First name",
   "bookingLastName": "Last name",
   "bookingEmail": "Email",
@@ -135,5 +135,7 @@
 
   "selectDefaultOption": "Select an option",
 
-  "bookingPhone": "Phone number"
+  "bookingPhone": "Phone number",
+
+  "buttonTitle": "Select"
 }

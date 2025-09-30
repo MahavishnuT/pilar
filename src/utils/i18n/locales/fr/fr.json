@@ -91,7 +91,7 @@
   "facilitiesShower": "Douche privée et installations sanitaires pour artistes",
   "facilitiesDock": "Quai de chargement et déchargement pour l'équipement des artistes",
 
-  "bookingTitle": "Réservation",
+  "bookingTitle": "Devis",
   "bookingFirstName": "Prénom",
   "bookingLastName": "Nom",
   "bookingEmail": "Email",
@@ -143,5 +143,7 @@
 
   "selectDefaultOption": "Sélectionnez une option",
 
-  "bookingPhone": "Numéro de téléphone"
+  "bookingPhone": "Numéro de téléphone",
+
+  "buttonTitle": "Sélectionner"
 }

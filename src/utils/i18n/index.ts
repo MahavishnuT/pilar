@@ -22,7 +22,7 @@ i18n
   .init({
     resources,
     fallbackLng: "en",
-    lng: "en",
+    lng: "nl",
 
     interpolation: {
       escapeValue: false

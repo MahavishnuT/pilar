@@ -2,7 +2,7 @@
   position: relative;
   background-color: white;
   color: black;
-  max-width: 15rem;
+  width: 13rem;
   padding: 1rem 1rem 4rem 1rem;
   text-align: center;
   transition: all 0.1s ease-in;
@@ -29,7 +29,7 @@
 }
 
 .card-container p:nth-child(4) {
-  width: 60%;
+  width: 100%;
   height: 3rem;
 }
 
@@ -39,7 +39,7 @@
 
 .card-title {
   font-family: Pilar;
-  font-size: clamp(.8rem, 2.5vw, 1.6rem);
+  font-size: clamp(.8rem, 2.5vw, 1.4rem);
 }
 
 .card-separator {

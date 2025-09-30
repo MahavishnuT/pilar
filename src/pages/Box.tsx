@@ -102,7 +102,7 @@ const Box = () => {
           <li>{t('facilitiesLockers')}</li>
           <li>{t('facilitiesArtists')}</li>
           <li>{t('facilitiesShower')}</li>
-          <li>{t('facilitiesKitchenBox')}</li>
+          <li>{t('facilitiesKitchen')}</li>
           <li>{t('facilitiesDock')}</li>
         </ul>
       </div>

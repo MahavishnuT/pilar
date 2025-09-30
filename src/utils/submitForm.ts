@@ -35,8 +35,8 @@ export const submitForm = async (
         ).padStart(2, '0')}`,
         visitors: formData.visitors,
         technical_contact: hasTechnical
-          ? 'Différent'
-          : 'Même que contact principal',
+          ? 'Zelfde contactpersoon'
+          : 'Verschillend',
         tech_name: hasTechnical
           ? ''
           : formData.firstNameTech + ' ' + formData.lastNameTech,
