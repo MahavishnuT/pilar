@@ -92,12 +92,24 @@
   .facilities-container {
     margin-bottom: 1rem;
     font-size: 2rem;
+    text-align: center;
+    align-items: center;
+    margin-left: 0;
+    margin-bottom: 5rem;
+  }
+
+  .facilities-title {
+    font-size: 2rem;
   }
 
   .facilities-container ul {
     padding: 0;
     margin: 0 auto;
     width: 80%;
+    text-align: center;
+  }
+
+  .facilities-container ul li {
     font-size: .9rem;
   }
 }

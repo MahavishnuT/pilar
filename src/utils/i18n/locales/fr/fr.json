@@ -109,7 +109,7 @@
   "bookingMaxVisitors": "Nombre estimé de visiteurs (maximum 300)",
   "bookingDurationError": "Les forfaits Essential et Essential Plus ne peuvent pas dépasser 8 heures",
   "bookingSubmit": "Envoyer",
-  "bookingPopUpTitle": "Merci pour votre demande !",
+  "bookingPopUpTitle": "Merci pour votre demande!",
   "bookingPopUpText": "Notre équipe vous contactera dans les 5 jours ouvrables.",
   "bookingBoxTechnicalContact": "Le contact technique est le même que mentionné ci-dessus",
   "bookingDifferentContact": "Contact pour les questions techniques",
