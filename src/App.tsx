@@ -14,7 +14,7 @@ import emailjs from '@emailjs/browser';
 emailjs.init('sCKc6CAwPBp3BdFLn');
 const App = () => {
   return (
-    <Router basename="/pilar">
+    <Router basename="/">
       <ScrollToTop />
       <NavBar />
       <Routes>
