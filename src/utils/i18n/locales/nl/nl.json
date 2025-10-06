@@ -102,7 +102,20 @@
   "bookingColon": ":",
   "bookingMaxVisitors": "Geschat aantal bezoekers (maximaal 300)",
   "bookingDurationError": "Het Essential en Essential Plus pakket mag niet langer zijn dan 8 uur",
+
+  "organisatieVUB": "VUB",
+  "organisatieCompany": "Commerciële onderneming",
+  "organisatieNonProfit": "Non-profit of sociale/culturele organisatie",
+  "organisatieIndividual": "Particulier persoon",
+
+  "eventTypeConcert": "Concert",
+  "eventTypeTheater": "Theater",
+  "eventTypeParty": "Party",
+  "eventTypeLecture": "Lezing / Conferentie",
+  "eventTypeFilm": "Filmvertoning",
+
   "selectDefaultOption": "Selecteer een optie",
+
   "bookingPhone": "Telefoonnummer"
 
   ,"buttonTitle": "Selecteer"

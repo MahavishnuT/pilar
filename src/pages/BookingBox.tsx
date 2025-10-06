@@ -150,15 +150,15 @@ const BookingBox = () => {
   const filteredEventTypes = EVENT_TYPE_OPTIONS.filter((eventType) => {
     if (formData.package === 'Essential') {
       return (
-        eventType === 'Lezing / Conferentie' ||
-        eventType === 'Film voorstelling'
+        eventType === t('eventTypeLecture') ||
+        eventType === t('eventTypeFilm')
       );
     }
     if (formData.package === 'Experience' || formData.package === 'Nightlife') {
       return (
-        eventType === 'Concert' ||
-        eventType === 'Theater' ||
-        eventType === 'Party'
+        eventType === t('eventTypeConcert') ||
+        eventType === t('eventTypeTheater') ||
+        eventType === t('eventTypeParty')
       );
     }
     return true;
