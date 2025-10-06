@@ -11,7 +11,7 @@ import BookingBar from './pages/BookingBar';
 import ScrollToTop from './components/ScrollToTop';
 import emailjs from '@emailjs/browser';
 
-emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+emailjs.init('5DD_kd635-JKWl5sr');
 const App = () => {
   return (
     <Router>
