@@ -1,14 +1,11 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import './index.css';
-import './utils/i18n/index.ts';
-import App from './App.tsx';
-import { HashRouter } from 'react-router';
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import './utils/i18n/index.ts'
+import App from './App.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <HashRouter>
-      <App />
-    </HashRouter>
-  </StrictMode>
-);
+    <App />
+  </StrictMode>,
+)
