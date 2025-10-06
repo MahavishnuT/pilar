@@ -8,7 +8,7 @@ export const submitForm = async (
 ): Promise<boolean> => {
   try {
     const response = await emailjs.send(
-      'service_ct1gq57',
+      'service_89c1xio',
       template,
       {
         from_name: `${formData.firstName

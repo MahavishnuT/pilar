@@ -169,7 +169,7 @@ const BookingBox = () => {
 
     const success = await submitForm(
       formData,
-      'template_9r3nzs6',
+      'template_805zivc',
       hasTechnical
     );
 

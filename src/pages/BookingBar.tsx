@@ -130,7 +130,7 @@ const BookingBar = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    const success = await submitForm(formData, 'template_9oiid8r');
+    const success = await submitForm(formData, 'template_pr186e3');
 
     if (success) {
       setFormData(initialFormState);
