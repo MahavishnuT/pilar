@@ -102,6 +102,8 @@
   "bookingColon": ":",
   "bookingMaxVisitors": "Geschat aantal bezoekers (maximaal 300)",
   "bookingDurationError": "Het Essential en Essential Plus pakket mag niet langer zijn dan 8 uur",
+  "bookingBoxTechnicalContact": "De contactpersoon voor techniek is dezelfde als hierboven vermeld",
+  "bookingSubmit": "Verzenden",
 
   "organisatieVUB": "VUB",
   "organisatieCompany": "Commerciële onderneming",
