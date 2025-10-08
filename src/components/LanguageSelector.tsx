@@ -1,23 +1,34 @@
 import { useTranslation } from 'react-i18next';
 import './languageSelector.css';
 
+const LANGUAGES = [
+  { code: 'nl', label: 'NL' },
+  { code: 'en', label: 'EN' },
+  { code: 'fr', label: 'FR' },
+] as const;
+
+type Language = (typeof LANGUAGES)[number]['code'];
+
 const LanguageSelector = () => {
   const { i18n } = useTranslation();
 
-  const changeLanguage = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    i18n.changeLanguage(event.target.value);
+  const changeLanguage = (lang: Language) => {
+    i18n.changeLanguage(lang);
   };
 
   return (
-    <select
-      value={i18n.language}
-      onChange={changeLanguage}
-      className="language-selector"
-    >
-      <option value="nl">NL</option>
-      <option value="en">EN</option>
-      <option value="fr">FR</option>
-    </select>
+    <div className="language-selector">
+      <div className={`slider-bg ${i18n.language}`} />
+      {LANGUAGES.map(({ code, label }) => (
+        <button
+          key={code}
+          className={`language ${i18n.language === code ? 'active' : ''}`}
+          onClick={() => changeLanguage(code)}
+        >
+          {label}
+        </button>
+      ))}
+    </div>
   );
 };
 

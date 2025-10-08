@@ -3,27 +3,56 @@
   right: 2rem;
   top: 50%;
   transform: translateY(-50%);
+  display: flex;
   background: transparent;
   border: 1px solid white;
-  color: white;
-  padding: 0.3rem;
-  font-size: 0.9rem;
+  padding: 2px;
+  gap: 2px;
+}
+
+.language {
   cursor: pointer;
-  border-radius: 4px;
-}
-
-.language-selector:focus {
-  outline: none;
-}
-
-.language-selector option {
-  background-color: black;
+  background: transparent;
+  border: none;
   color: white;
+  padding: 4px 8px;
+  font-size: 0.9rem;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.language.active {
+  color: black;
+}
+
+.slider-bg {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  height: calc(100% - 4px);
+  width: calc(33.33% - 2px);
+  background: white;
+  transition: transform 0.3s ease;
+}
+
+.slider-bg.nl {
+  transform: translateX(0);
+}
+
+.slider-bg.en {
+  transform: translateX(calc(100% + 1px));
+}
+
+.slider-bg.fr {
+  transform: translateX(calc(200% + 2px));
 }
 
 @media (max-width: 768px) {
   .language-selector {
     right: 1rem;
+  }
+
+  .language {
     font-size: 0.8rem;
   }
 }
