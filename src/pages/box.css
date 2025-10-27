@@ -36,6 +36,18 @@
   height: 100vh;
 }
 
+.facilities-button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4rem;
+  margin-top: -2rem;
+}
+
+.facilities-button {
+  width: fit-content;
+  padding: 1rem 2rem;
+}
+
 @media (max-width: 768px) {
   .pilar-box-img {
     object-fit: cover;

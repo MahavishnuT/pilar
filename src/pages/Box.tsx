@@ -9,6 +9,11 @@ import box_5 from '../assets/pictures/box/box_5.jpg';
 import './box.css';
 import Card from '../components/Card';
 import { useTranslation } from 'react-i18next';
+import tenantGuideEn from '../assets/pdf/Tenant Guide Pilar Box.pdf';
+import tenantGuideNl from '../assets/pdf/Huurgids Pilar Box.pdf';
+import tenantGuideFr from '../assets/pdf/Guide Du Locataire Pilar Box.pdf';
+import i18n from '../utils/i18n';
+
 const Box = () => {
   const { t } = useTranslation();
 
@@ -105,6 +110,45 @@ const Box = () => {
           <li>{t('facilitiesKitchen')}</li>
           <li>{t('facilitiesDock')}</li>
         </ul>
+      </div>
+      <div className="facilities-button-container">
+
+      <button
+        type="button"
+        className="facilities-button"
+        onClick={() => {
+          const pdfFile = (() => {
+            switch (i18n.language) {
+              case 'en':
+                return tenantGuideEn;
+              case 'fr':
+                return tenantGuideFr;
+              default:
+                return tenantGuideNl;
+            }
+          })();
+
+          const fileName = (() => {
+            switch (i18n.language) {
+              case 'en':
+                return 'Tenant Guide Pilar Box.pdf';
+              case 'fr':
+                return 'Guide Du Locataire Pilar Box.pdf';
+              default:
+                return 'Huurgids Pilar Box.pdf';
+            }
+          })();
+
+          const link = document.createElement('a');
+          link.href = pdfFile;
+          link.download = fileName;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }}
+      >
+        {t('facilitiesButton')}
+      </button>
       </div>
     </section>
   );

@@ -137,5 +137,7 @@
 
   "bookingPhone": "Phone number",
 
-  "buttonTitle": "Select"
+  "buttonTitle": "Select",
+
+  "facilitiesButton": "Download rental guide"
 }

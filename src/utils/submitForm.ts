@@ -26,7 +26,7 @@ export const submitForm = async (
         event_description: formData.eventDescription,
         package_type: formData.package,
         event_type: formData.eventType,
-        has_bar: formData.hasBar ? 'Oui' : 'Non',
+        has_bar: formData.hasBar || formData.package === 'Nightlife' || formData.package === 'Experience' ? 'Yes' : 'No',
         start_time: `${String(formData.startHour).padStart(2, '0')}:${String(
           formData.startMinute
         ).padStart(2, '0')}`,

@@ -118,7 +118,9 @@
 
   "selectDefaultOption": "Selecteer een optie",
 
-  "bookingPhone": "Telefoonnummer"
+  "bookingPhone": "Telefoonnummer",
 
-  ,"buttonTitle": "Selecteer"
+  "buttonTitle": "Selecteer",
+
+  "facilitiesButton": "Download huurgids"
 }
