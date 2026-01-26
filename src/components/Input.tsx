@@ -25,6 +25,11 @@ const Input: FC<InputProps> = ({
   onChange,
   required,
 }) => {
+  // Set minimum date to today if type is date and no min is provided
+  const minValue = type === 'date' && !min 
+    ? new Date().toISOString().split('T')[0] 
+    : min;
+
   return (
     <div className={`input-container ${className || ''}`}>
       {title && (
@@ -37,7 +42,7 @@ const Input: FC<InputProps> = ({
         type={type}
         id={`input-${title}`}
         placeholder={placeholder}
-        min={min}
+        min={minValue}
         max={max}
         value={value}
         onChange={(e) => onChange?.(e.target.value)}

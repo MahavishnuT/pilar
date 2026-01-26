@@ -59,19 +59,19 @@ const BookingBox = () => {
     emailTech: '',
     phoneTech: '',
   };
-
+  
   const ORGANIZATION_OPTIONS = [
     t('organizationVUB'),
     t('organizationCompany'),
     t('organizationNonProfit'),
     t('organizationIndividual'),
   ];
-
+  
   const [formData, setFormData] = useState<BookingForm>(initialFormState);
   const [durationError, setDurationError] = useState<boolean>(false);
   const [showPopUp, setShowPopUp] = useState<boolean>(false);
   const [hasTechnical, setHasTechnical] = useState<boolean>(false);
-
+  
   const updateFormData = (
     field: keyof BookingForm,
     value: string | number | boolean | string[]

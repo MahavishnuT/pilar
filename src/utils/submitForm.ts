@@ -1,12 +1,28 @@
 import type { BookingForm } from '../utils/types/bookingForm';
 import emailjs from '@emailjs/browser';
 
+const formatDateToEU = (isoDate: string): string => {
+  if (!isoDate) return '';
+  const [year, month, day] = isoDate.split('-');
+  if (year && month && day) {
+    return `${day}-${month}-${year}`;
+  }
+  return isoDate;
+};
+
 export const submitForm = async (
   formData: BookingForm,
   template: string,
   hasTechnical?: boolean
 ): Promise<boolean> => {
   try {
+    const formattedDates = formData.dates
+      .filter((date) => date)
+      .map((date) => formatDateToEU(date))
+      .join(', ');
+    
+      console.log(formattedDates);
+
     const response = await emailjs.send(
       'service_0xqvkul',
       template,
@@ -21,12 +37,17 @@ export const submitForm = async (
         company: formData.companyName,
         billing_address: formData.billingAddress,
         organization: formData.organization,
-        dates: formData.dates.filter((date) => date).join(', '),
+        dates: formattedDates,
         event_name: formData.eventName,
         event_description: formData.eventDescription,
         package_type: formData.package,
         event_type: formData.eventType,
-        has_bar: formData.hasBar || formData.package === 'Nightlife' || formData.package === 'Experience' ? 'Yes' : 'No',
+        has_bar:
+          formData.hasBar ||
+          formData.package === 'Nightlife' ||
+          formData.package === 'Experience'
+            ? 'Yes'
+            : 'No',
         start_time: `${String(formData.startHour).padStart(2, '0')}:${String(
           formData.startMinute
         ).padStart(2, '0')}`,
